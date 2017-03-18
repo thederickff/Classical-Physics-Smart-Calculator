@@ -47,7 +47,7 @@ public class Screen extends javax.swing.JFrame {
         paneMain.setForeground(new java.awt.Color(255, 255, 51));
 
         spnValue.setFont(new java.awt.Font("Dialog", 0, 18)); // NOI18N
-        spnValue.setModel(new javax.swing.SpinnerNumberModel());
+        spnValue.setModel(new javax.swing.SpinnerNumberModel(0.0d, null, null, 1.0d));
         spnValue.addChangeListener(new javax.swing.event.ChangeListener() {
             public void stateChanged(javax.swing.event.ChangeEvent evt) {
                 spnValueStateChanged(evt);
@@ -119,7 +119,7 @@ public class Screen extends javax.swing.JFrame {
 
     private void spnValueStateChanged(javax.swing.event.ChangeEvent evt) {//GEN-FIRST:event_spnValueStateChanged
         // TODO add your handling code here:
-        converter.stateChanged();
+        converter.stateChanged(txtResult, spnValue, cmbUnit);
     }//GEN-LAST:event_spnValueStateChanged
 
     /**
