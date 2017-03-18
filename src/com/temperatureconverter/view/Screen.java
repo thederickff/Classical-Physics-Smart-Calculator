@@ -3,7 +3,9 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package com.derickfelix.view;
+package com.temperatureconverter.view;
+
+import com.temperatureconverter.controller.Converter;
 
 /**
  *
@@ -11,6 +13,7 @@ package com.derickfelix.view;
  */
 public class Screen extends javax.swing.JFrame {
 
+    Converter tc;
     /**
      * Creates new form Screen
      */
@@ -46,6 +49,11 @@ public class Screen extends javax.swing.JFrame {
 
         spnValue.setFont(new java.awt.Font("Dialog", 0, 18)); // NOI18N
         spnValue.setModel(new javax.swing.SpinnerNumberModel());
+        spnValue.addChangeListener(new javax.swing.event.ChangeListener() {
+            public void stateChanged(javax.swing.event.ChangeEvent evt) {
+                spnValueStateChanged(evt);
+            }
+        });
 
         lblResult.setFont(new java.awt.Font("Dialog", 1, 24)); // NOI18N
         lblResult.setText("Result");
@@ -99,6 +107,11 @@ public class Screen extends javax.swing.JFrame {
         pack();
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
+
+    private void spnValueStateChanged(javax.swing.event.ChangeEvent evt) {//GEN-FIRST:event_spnValueStateChanged
+        // TODO add your handling code here:
+        
+    }//GEN-LAST:event_spnValueStateChanged
 
     /**
      * @param args the command line arguments
