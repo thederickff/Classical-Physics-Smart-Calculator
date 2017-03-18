@@ -13,11 +13,13 @@ import com.temperatureconverter.controller.Converter;
  */
 public class Screen extends javax.swing.JFrame {
 
-    Converter tc;
+    Converter converter;
     /**
      * Creates new form Screen
      */
     public Screen() {
+        converter = new Converter();
+        
         initComponents();
     }
 
@@ -110,7 +112,7 @@ public class Screen extends javax.swing.JFrame {
 
     private void spnValueStateChanged(javax.swing.event.ChangeEvent evt) {//GEN-FIRST:event_spnValueStateChanged
         // TODO add your handling code here:
-        
+        converter.stateChanged();
     }//GEN-LAST:event_spnValueStateChanged
 
     /**

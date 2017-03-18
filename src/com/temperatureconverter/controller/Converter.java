@@ -5,11 +5,21 @@
  */
 package com.temperatureconverter.controller;
 
+import com.temperatureconverter.model.Scale;
+
 /**
  *
  * @author Derick
  */
 public class Converter {
+    
+    private Scale celsius;
+    private Scale fahreinheit;
+    private Scale kelvin;
+    
+    public Converter(){
+        
+    }
     
     public void stateChanged(){
         
