@@ -27,18 +27,16 @@ public class Converter {
     public void stateChanged(JTextField txt, JSpinner spn, JComboBox cmb) {
         int from = cmb.getSelectedIndex();
         double value = (double) spn.getValue();
-        double result;
+        double result = 0;
         switch (from) {
             case 1:
                 result = (5 * (value - 32)) / 9;
-                
-                txt.setText(Double.toString(result));
                 break;
             case 2:
-
+                
                 break;
             case 3:
-
+                result = ((value * 9) / 5) + 32;
                 break;
             case 4:
 
@@ -52,6 +50,8 @@ public class Converter {
             default:
                 System.out.println("Erro selecione um tipo!");
         }
+        
+         txt.setText(Double.toString(result));
 
     }
 }
