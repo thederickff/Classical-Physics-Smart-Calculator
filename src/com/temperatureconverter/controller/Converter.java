@@ -33,19 +33,19 @@ public class Converter {
                 result = (5 * (value - 32)) / 9;
                 break;
             case 2:
-                
+                result = ((5 * (value - 32)) / 9)+247;
                 break;
             case 3:
                 result = ((value * 9) / 5) + 32;
                 break;
             case 4:
-
+                result = value + 247;
                 break;
             case 5:
-
+                result = (((value - 247) * 9) / 5) + 32;
                 break;
             case 6:
-
+                result = value - 247;
                 break;
             default:
                 System.out.println("Erro selecione um tipo!");
