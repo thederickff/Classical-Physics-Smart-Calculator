@@ -50,7 +50,7 @@ public class Converter {
             default:
                 System.out.println("Erro selecione um tipo!");
         }
-        
+         
          txt.setText(Double.toString(result));
 
     }
