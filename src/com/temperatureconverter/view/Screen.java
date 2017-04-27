@@ -15,7 +15,14 @@ public class Screen extends javax.swing.JFrame {
      * Creates new form Screen
      */
     public Screen() {
+        
         initComponents();
+        configComponents();
+    }
+    private void configComponents(){
+        this.lblCResult.setVisible(false);
+        this.lblScaleName.setText(this.txtScaleName.getText());
+        this.lblRScaleName.setText(this.cmbRScale.getSelectedItem().toString());
     }
 
     /**
@@ -27,51 +34,57 @@ public class Screen extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jLabel1 = new javax.swing.JLabel();
-        jPanel1 = new javax.swing.JPanel();
+        lblTitle = new javax.swing.JLabel();
+        panelRelations = new javax.swing.JPanel();
         cmbRScale = new javax.swing.JComboBox<>();
-        jLabel2 = new javax.swing.JLabel();
-        txtRscaleName = new javax.swing.JTextField();
-        panelScale = new javax.swing.JPanel();
+        lblScaleNameInput = new javax.swing.JLabel();
+        txtScaleName = new javax.swing.JTextField();
+        panelScaleInput = new javax.swing.JPanel();
         lblScaleName = new javax.swing.JLabel();
         spnPAScale = new javax.swing.JSpinner();
-        jLabel3 = new javax.swing.JLabel();
-        jLabel4 = new javax.swing.JLabel();
+        lblPAScale = new javax.swing.JLabel();
+        lblPBScale = new javax.swing.JLabel();
         spnPBScale = new javax.swing.JSpinner();
-        jPanel3 = new javax.swing.JPanel();
+        panelRScaleInput = new javax.swing.JPanel();
         lblRScaleName = new javax.swing.JLabel();
-        jLabel5 = new javax.swing.JLabel();
+        lblRPAScale = new javax.swing.JLabel();
         spnRPAScaleName = new javax.swing.JSpinner();
-        jLabel6 = new javax.swing.JLabel();
+        lblRPBScale = new javax.swing.JLabel();
         spnRSBScaleName = new javax.swing.JSpinner();
-        jPanel2 = new javax.swing.JPanel();
-        jComboBox3 = new javax.swing.JComboBox<>();
+        panelConverter = new javax.swing.JPanel();
+        cmbFromValue = new javax.swing.JComboBox<>();
+        cmbToValue = new javax.swing.JComboBox<>();
+        lblFromInput = new javax.swing.JLabel();
+        lblToInput = new javax.swing.JLabel();
+        txtFromValue = new javax.swing.JTextField();
+        txtToValue = new javax.swing.JTextField();
+        lblCResult = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Termology - Basic Software");
 
-        jLabel1.setFont(new java.awt.Font("DejaVu Sans", 1, 18)); // NOI18N
-        jLabel1.setText("Termology");
+        lblTitle.setFont(new java.awt.Font("DejaVu Sans", 1, 18)); // NOI18N
+        lblTitle.setText("Termology");
 
-        jPanel1.setBorder(javax.swing.BorderFactory.createTitledBorder("Relations"));
+        panelRelations.setBorder(javax.swing.BorderFactory.createTitledBorder("Relations"));
 
-        cmbRScale.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Select Relational Scale", "Farenheit", "Celsius", "Kelvin" }));
+        cmbRScale.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Kelvin [K]", "Fahrenheit [F]", "Celsius [C]" }));
         cmbRScale.addItemListener(new java.awt.event.ItemListener() {
             public void itemStateChanged(java.awt.event.ItemEvent evt) {
                 cmbRScaleItemStateChanged(evt);
             }
         });
 
-        jLabel2.setFont(new java.awt.Font("DejaVu Sans", 1, 12)); // NOI18N
-        jLabel2.setText("Scale Name");
+        lblScaleNameInput.setFont(new java.awt.Font("DejaVu Sans", 1, 12)); // NOI18N
+        lblScaleNameInput.setText("Scale Name");
 
-        txtRscaleName.addCaretListener(new javax.swing.event.CaretListener() {
+        txtScaleName.addCaretListener(new javax.swing.event.CaretListener() {
             public void caretUpdate(javax.swing.event.CaretEvent evt) {
-                txtRscaleNameCaretUpdate(evt);
+                txtScaleNameCaretUpdate(evt);
             }
         });
 
-        panelScale.setBorder(javax.swing.BorderFactory.createEtchedBorder());
+        panelScaleInput.setBorder(javax.swing.BorderFactory.createEtchedBorder());
 
         lblScaleName.setFont(new java.awt.Font("DejaVu Sans", 1, 14)); // NOI18N
         lblScaleName.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
@@ -79,148 +92,188 @@ public class Screen extends javax.swing.JFrame {
 
         spnPAScale.setModel(new javax.swing.SpinnerNumberModel());
 
-        jLabel3.setText("Point A");
+        lblPAScale.setText("Point A");
 
-        jLabel4.setText("Point B");
+        lblPBScale.setText("Point B");
 
         spnPBScale.setModel(new javax.swing.SpinnerNumberModel());
 
-        javax.swing.GroupLayout panelScaleLayout = new javax.swing.GroupLayout(panelScale);
-        panelScale.setLayout(panelScaleLayout);
-        panelScaleLayout.setHorizontalGroup(
-            panelScaleLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(panelScaleLayout.createSequentialGroup()
+        javax.swing.GroupLayout panelScaleInputLayout = new javax.swing.GroupLayout(panelScaleInput);
+        panelScaleInput.setLayout(panelScaleInputLayout);
+        panelScaleInputLayout.setHorizontalGroup(
+            panelScaleInputLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(panelScaleInputLayout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addGroup(panelScaleLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panelScaleLayout.createSequentialGroup()
-                        .addGroup(panelScaleLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addGroup(panelScaleLayout.createSequentialGroup()
+                .addGroup(panelScaleInputLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panelScaleInputLayout.createSequentialGroup()
+                        .addGroup(panelScaleInputLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addGroup(panelScaleInputLayout.createSequentialGroup()
                                 .addGap(1, 1, 1)
-                                .addComponent(jLabel4))
-                            .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addComponent(lblPBScale))
+                            .addComponent(lblPAScale, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addGroup(panelScaleLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                        .addGroup(panelScaleInputLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                             .addComponent(spnPAScale, javax.swing.GroupLayout.PREFERRED_SIZE, 105, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(spnPBScale, javax.swing.GroupLayout.PREFERRED_SIZE, 105, javax.swing.GroupLayout.PREFERRED_SIZE)))
                     .addComponent(lblScaleName, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 156, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap())
         );
-        panelScaleLayout.setVerticalGroup(
-            panelScaleLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(panelScaleLayout.createSequentialGroup()
+        panelScaleInputLayout.setVerticalGroup(
+            panelScaleInputLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(panelScaleInputLayout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(lblScaleName)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(panelScaleLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel3)
+                .addGroup(panelScaleInputLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(lblPAScale)
                     .addComponent(spnPAScale, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
-                .addGroup(panelScaleLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel4)
+                .addGroup(panelScaleInputLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(lblPBScale)
                     .addComponent(spnPBScale, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap(19, Short.MAX_VALUE))
         );
 
-        jPanel3.setBorder(javax.swing.BorderFactory.createEtchedBorder());
+        panelRScaleInput.setBorder(javax.swing.BorderFactory.createEtchedBorder());
 
         lblRScaleName.setFont(new java.awt.Font("DejaVu Sans", 1, 14)); // NOI18N
         lblRScaleName.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         lblRScaleName.setText("scale");
 
-        jLabel5.setText("Point A");
+        lblRPAScale.setText("Point A");
 
         spnRPAScaleName.setModel(new javax.swing.SpinnerNumberModel());
 
-        jLabel6.setText("Point B");
+        lblRPBScale.setText("Point B");
 
         spnRSBScaleName.setModel(new javax.swing.SpinnerNumberModel());
 
-        javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
-        jPanel3.setLayout(jPanel3Layout);
-        jPanel3Layout.setHorizontalGroup(
-            jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel3Layout.createSequentialGroup()
+        javax.swing.GroupLayout panelRScaleInputLayout = new javax.swing.GroupLayout(panelRScaleInput);
+        panelRScaleInput.setLayout(panelRScaleInputLayout);
+        panelRScaleInputLayout.setHorizontalGroup(
+            panelRScaleInputLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(panelRScaleInputLayout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(lblRScaleName, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel3Layout.createSequentialGroup()
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panelRScaleInputLayout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(jLabel6, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jLabel5))
+                .addGroup(panelRScaleInputLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(lblRPBScale, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(lblRPAScale))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                .addGroup(panelRScaleInputLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(spnRSBScaleName)
                     .addComponent(spnRPAScaleName, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18))
         );
-        jPanel3Layout.setVerticalGroup(
-            jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel3Layout.createSequentialGroup()
+        panelRScaleInputLayout.setVerticalGroup(
+            panelRScaleInputLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(panelRScaleInputLayout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(lblRScaleName)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel5)
+                .addGroup(panelRScaleInputLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(lblRPAScale)
                     .addComponent(spnRPAScaleName, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
-                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel6)
+                .addGroup(panelRScaleInputLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(lblRPBScale)
                     .addComponent(spnRSBScaleName, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap(15, Short.MAX_VALUE))
         );
 
-        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
-        jPanel1.setLayout(jPanel1Layout);
-        jPanel1Layout.setHorizontalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel1Layout.createSequentialGroup()
+        javax.swing.GroupLayout panelRelationsLayout = new javax.swing.GroupLayout(panelRelations);
+        panelRelations.setLayout(panelRelationsLayout);
+        panelRelationsLayout.setHorizontalGroup(
+            panelRelationsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(panelRelationsLayout.createSequentialGroup()
                 .addGap(16, 16, 16)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(jLabel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                        .addComponent(panelScale, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(txtRscaleName)))
+                .addGroup(panelRelationsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(lblScaleNameInput, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(panelScaleInput, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(txtScaleName))
                 .addGap(63, 63, 63)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(jPanel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGroup(panelRelationsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(panelRScaleInput, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(cmbRScale, javax.swing.GroupLayout.PREFERRED_SIZE, 178, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap(14, Short.MAX_VALUE))
         );
-        jPanel1Layout.setVerticalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel1Layout.createSequentialGroup()
+        panelRelationsLayout.setVerticalGroup(
+            panelRelationsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(panelRelationsLayout.createSequentialGroup()
                 .addGap(22, 22, 22)
-                .addComponent(jLabel2)
+                .addComponent(lblScaleNameInput)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                .addGroup(panelRelationsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(cmbRScale, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(txtRscaleName, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(txtScaleName, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(10, 10, 10)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(panelScale, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGroup(panelRelationsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(panelScaleInput, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(panelRScaleInput, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap(45, Short.MAX_VALUE))
         );
 
-        jPanel2.setBorder(javax.swing.BorderFactory.createTitledBorder("Converter"));
+        panelConverter.setBorder(javax.swing.BorderFactory.createTitledBorder("Converter"));
 
-        jComboBox3.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Select the Scale", "Farenheit", "Celsius", "Kelvin" }));
+        cmbFromValue.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Farenheit [F]", "Celsius [C]", "Kelvin [K]" }));
 
-        javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
-        jPanel2.setLayout(jPanel2Layout);
-        jPanel2Layout.setHorizontalGroup(
-            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel2Layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jComboBox3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(177, Short.MAX_VALUE))
+        cmbToValue.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Celsius [C]", "Farenheit [F]", "Kelvin [K]" }));
+
+        lblFromInput.setFont(new java.awt.Font("DejaVu Sans", 1, 12)); // NOI18N
+        lblFromInput.setText("From");
+
+        lblToInput.setFont(new java.awt.Font("DejaVu Sans", 1, 12)); // NOI18N
+        lblToInput.setText("To");
+
+        txtToValue.setFont(new java.awt.Font("DejaVu Sans", 1, 12)); // NOI18N
+        txtToValue.setDisabledTextColor(new java.awt.Color(0, 0, 0));
+        txtToValue.setEnabled(false);
+
+        lblCResult.setFont(new java.awt.Font("DejaVu Sans", 1, 20)); // NOI18N
+        lblCResult.setForeground(new java.awt.Color(102, 0, 0));
+        lblCResult.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        lblCResult.setToolTipText("Result");
+        lblCResult.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 102, 0), 4, true));
+
+        javax.swing.GroupLayout panelConverterLayout = new javax.swing.GroupLayout(panelConverter);
+        panelConverter.setLayout(panelConverterLayout);
+        panelConverterLayout.setHorizontalGroup(
+            panelConverterLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(panelConverterLayout.createSequentialGroup()
+                .addGap(23, 23, 23)
+                .addGroup(panelConverterLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(lblCResult, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addGroup(panelConverterLayout.createSequentialGroup()
+                        .addGroup(panelConverterLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(lblFromInput)
+                            .addComponent(txtFromValue)
+                            .addComponent(cmbFromValue, 0, 150, Short.MAX_VALUE))
+                        .addGap(26, 26, 26)
+                        .addGroup(panelConverterLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(txtToValue)
+                            .addComponent(lblToInput)
+                            .addComponent(cmbToValue, 0, 150, Short.MAX_VALUE))))
+                .addContainerGap(34, Short.MAX_VALUE))
         );
-        jPanel2Layout.setVerticalGroup(
-            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel2Layout.createSequentialGroup()
-                .addGap(20, 20, 20)
-                .addComponent(jComboBox3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(220, Short.MAX_VALUE))
+        panelConverterLayout.setVerticalGroup(
+            panelConverterLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(panelConverterLayout.createSequentialGroup()
+                .addGap(25, 25, 25)
+                .addGroup(panelConverterLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(lblFromInput)
+                    .addComponent(lblToInput))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(panelConverterLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(txtFromValue, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(txtToValue, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(panelConverterLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(cmbFromValue, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(cmbToValue, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(38, 38, 38)
+                .addComponent(lblCResult, javax.swing.GroupLayout.PREFERRED_SIZE, 74, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -228,43 +281,40 @@ public class Screen extends javax.swing.JFrame {
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(40, 40, 40)
-                        .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(layout.createSequentialGroup()
-                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(jLabel1)
-                        .addGap(50, 50, 50)))
-                .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(59, 59, 59))
+                .addGap(40, 40, 40)
+                .addComponent(panelRelations, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(panelConverter, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addContainerGap())
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(lblTitle)
+                .addGap(385, 385, 385))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(27, 27, 27)
-                .addComponent(jLabel1)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(21, 21, 21)
+                .addComponent(lblTitle)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(panelRelations, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(panelConverter, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addContainerGap(21, Short.MAX_VALUE))
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(33, 33, 33))
         );
 
         setSize(new java.awt.Dimension(944, 404));
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
-    private void txtRscaleNameCaretUpdate(javax.swing.event.CaretEvent evt) {//GEN-FIRST:event_txtRscaleNameCaretUpdate
+    private void txtScaleNameCaretUpdate(javax.swing.event.CaretEvent evt) {//GEN-FIRST:event_txtScaleNameCaretUpdate
         // TODO add your handling code here:
         
-        String scaleName = this.txtRscaleName.getText();
+        String scaleName = this.txtScaleName.getText();
         
         this.lblScaleName.setText(scaleName);
        
-    }//GEN-LAST:event_txtRscaleNameCaretUpdate
+    }//GEN-LAST:event_txtScaleNameCaretUpdate
 
     private void cmbRScaleItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_cmbRScaleItemStateChanged
         // TODO add your handling code here:
@@ -308,24 +358,30 @@ public class Screen extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JComboBox<String> cmbFromValue;
     private javax.swing.JComboBox<String> cmbRScale;
-    private javax.swing.JComboBox<String> jComboBox3;
-    private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel2;
-    private javax.swing.JLabel jLabel3;
-    private javax.swing.JLabel jLabel4;
-    private javax.swing.JLabel jLabel5;
-    private javax.swing.JLabel jLabel6;
-    private javax.swing.JPanel jPanel1;
-    private javax.swing.JPanel jPanel2;
-    private javax.swing.JPanel jPanel3;
+    private javax.swing.JComboBox<String> cmbToValue;
+    private javax.swing.JLabel lblCResult;
+    private javax.swing.JLabel lblFromInput;
+    private javax.swing.JLabel lblPAScale;
+    private javax.swing.JLabel lblPBScale;
+    private javax.swing.JLabel lblRPAScale;
+    private javax.swing.JLabel lblRPBScale;
     private javax.swing.JLabel lblRScaleName;
     private javax.swing.JLabel lblScaleName;
-    private javax.swing.JPanel panelScale;
+    private javax.swing.JLabel lblScaleNameInput;
+    private javax.swing.JLabel lblTitle;
+    private javax.swing.JLabel lblToInput;
+    private javax.swing.JPanel panelConverter;
+    private javax.swing.JPanel panelRScaleInput;
+    private javax.swing.JPanel panelRelations;
+    private javax.swing.JPanel panelScaleInput;
     private javax.swing.JSpinner spnPAScale;
     private javax.swing.JSpinner spnPBScale;
     private javax.swing.JSpinner spnRPAScaleName;
     private javax.swing.JSpinner spnRSBScaleName;
-    private javax.swing.JTextField txtRscaleName;
+    private javax.swing.JTextField txtFromValue;
+    private javax.swing.JTextField txtScaleName;
+    private javax.swing.JTextField txtToValue;
     // End of variables declaration//GEN-END:variables
 }

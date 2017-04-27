@@ -12,40 +12,39 @@ package com.temperatureconverter.model;
 public class Scale {
     
     private String name;
-    private int unit;
-
-    public Scale(String name, int unit) {
+    private String symbol;
+    private int value;
+    
+    public Scale(String name, String symbol, int value){
         this.name = name;
-        this.unit = unit;
+        this.symbol = symbol;
+        this.value = value;
     }
 
-    /**
-     * @return the name
-     */
     public String getName() {
         return name;
     }
 
-    /**
-     * @return the unit
-     */
-    public int getUnit() {
-        return unit;
-    }
-
-    /**
-     * @param name the name to set
-     */
     public void setName(String name) {
         this.name = name;
     }
 
-    /**
-     * @param unit the unit to set
-     */
-    public void setUnit(int unit) {
-        this.unit = unit;
+    public String getSymbol() {
+        return symbol;
     }
+
+    public void setSymbol(String symbol) {
+        this.symbol = symbol;
+    }
+
+    public int getValue() {
+        return value;
+    }
+
+    public void setValue(int value) {
+        this.value = value;
+    }
+    
     
     
 }
