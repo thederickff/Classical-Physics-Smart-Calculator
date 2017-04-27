@@ -50,7 +50,7 @@
                   <Component id="panelRelations" max="32767" attributes="0"/>
                   <Component id="panelConverter" max="32767" attributes="0"/>
               </Group>
-              <EmptySpace pref="21" max="32767" attributes="0"/>
+              <EmptySpace pref="14" max="32767" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>
@@ -59,7 +59,7 @@
     <Component class="javax.swing.JLabel" name="lblTitle">
       <Properties>
         <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-          <Font name="DejaVu Sans" size="18" style="1"/>
+          <Font name="DejaVu Sans" size="24" style="1"/>
         </Property>
         <Property name="text" type="java.lang.String" value="Termology"/>
       </Properties>

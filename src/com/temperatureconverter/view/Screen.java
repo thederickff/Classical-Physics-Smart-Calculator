@@ -63,7 +63,7 @@ public class Screen extends javax.swing.JFrame {
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Termology - Basic Software");
 
-        lblTitle.setFont(new java.awt.Font("DejaVu Sans", 1, 18)); // NOI18N
+        lblTitle.setFont(new java.awt.Font("DejaVu Sans", 1, 24)); // NOI18N
         lblTitle.setText("Termology");
 
         panelRelations.setBorder(javax.swing.BorderFactory.createTitledBorder("Relations"));
@@ -300,7 +300,7 @@ public class Screen extends javax.swing.JFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(panelRelations, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(panelConverter, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addContainerGap(21, Short.MAX_VALUE))
+                .addContainerGap(14, Short.MAX_VALUE))
         );
 
         setSize(new java.awt.Dimension(944, 404));
