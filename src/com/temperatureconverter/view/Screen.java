@@ -54,8 +54,6 @@ public class Screen extends javax.swing.JFrame {
         panelConverter = new javax.swing.JPanel();
         cmbFromValue = new javax.swing.JComboBox<>();
         cmbToValue = new javax.swing.JComboBox<>();
-        lblFromInput = new javax.swing.JLabel();
-        lblToInput = new javax.swing.JLabel();
         txtFromValue = new javax.swing.JTextField();
         txtToValue = new javax.swing.JTextField();
         lblCResult = new javax.swing.JLabel();
@@ -220,15 +218,13 @@ public class Screen extends javax.swing.JFrame {
 
         cmbToValue.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Celsius [C]", "Farenheit [F]", "Kelvin [K]" }));
 
-        lblFromInput.setFont(new java.awt.Font("DejaVu Sans", 1, 12)); // NOI18N
-        lblFromInput.setText("From");
-
-        lblToInput.setFont(new java.awt.Font("DejaVu Sans", 1, 12)); // NOI18N
-        lblToInput.setText("To");
-
         txtToValue.setFont(new java.awt.Font("DejaVu Sans", 1, 12)); // NOI18N
         txtToValue.setDisabledTextColor(new java.awt.Color(0, 0, 0));
-        txtToValue.setEnabled(false);
+        txtToValue.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtToValueActionPerformed(evt);
+            }
+        });
 
         lblCResult.setFont(new java.awt.Font("DejaVu Sans", 1, 20)); // NOI18N
         lblCResult.setForeground(new java.awt.Color(102, 0, 0));
@@ -246,34 +242,28 @@ public class Screen extends javax.swing.JFrame {
                     .addComponent(lblCResult, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addGroup(panelConverterLayout.createSequentialGroup()
                         .addGroup(panelConverterLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(lblFromInput)
                             .addComponent(txtFromValue)
                             .addComponent(cmbFromValue, 0, 150, Short.MAX_VALUE))
                         .addGap(26, 26, 26)
                         .addGroup(panelConverterLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addComponent(txtToValue)
-                            .addComponent(lblToInput)
                             .addComponent(cmbToValue, 0, 150, Short.MAX_VALUE))))
                 .addContainerGap(34, Short.MAX_VALUE))
         );
         panelConverterLayout.setVerticalGroup(
             panelConverterLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(panelConverterLayout.createSequentialGroup()
-                .addGap(25, 25, 25)
+                .addGap(30, 30, 30)
                 .addGroup(panelConverterLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(lblFromInput)
-                    .addComponent(lblToInput))
+                    .addComponent(cmbToValue, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(cmbFromValue, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(panelConverterLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(txtFromValue, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(txtToValue, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(panelConverterLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(cmbFromValue, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(cmbToValue, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(38, 38, 38)
+                .addGap(54, 54, 54)
                 .addComponent(lblCResult, javax.swing.GroupLayout.PREFERRED_SIZE, 74, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(41, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -286,17 +276,17 @@ public class Screen extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(panelConverter, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addContainerGap())
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addGap(384, 384, 384)
                 .addComponent(lblTitle)
-                .addGap(385, 385, 385))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(21, 21, 21)
+                .addGap(15, 15, 15)
                 .addComponent(lblTitle)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(panelRelations, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(panelConverter, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
@@ -321,6 +311,10 @@ public class Screen extends javax.swing.JFrame {
        this.lblRScaleName.setText(this.cmbRScale.getSelectedItem().toString());
  
     }//GEN-LAST:event_cmbRScaleItemStateChanged
+
+    private void txtToValueActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtToValueActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtToValueActionPerformed
 
     /**
      * @param args the command line arguments
@@ -362,7 +356,6 @@ public class Screen extends javax.swing.JFrame {
     private javax.swing.JComboBox<String> cmbRScale;
     private javax.swing.JComboBox<String> cmbToValue;
     private javax.swing.JLabel lblCResult;
-    private javax.swing.JLabel lblFromInput;
     private javax.swing.JLabel lblPAScale;
     private javax.swing.JLabel lblPBScale;
     private javax.swing.JLabel lblRPAScale;
@@ -371,7 +364,6 @@ public class Screen extends javax.swing.JFrame {
     private javax.swing.JLabel lblScaleName;
     private javax.swing.JLabel lblScaleNameInput;
     private javax.swing.JLabel lblTitle;
-    private javax.swing.JLabel lblToInput;
     private javax.swing.JPanel panelConverter;
     private javax.swing.JPanel panelRScaleInput;
     private javax.swing.JPanel panelRelations;
