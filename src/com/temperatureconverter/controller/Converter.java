@@ -42,32 +42,37 @@ public class Converter {
             System.out.println("Tente colocar um numero valido!");
         }
     }
-    private void findEachValue(Scale from){
+    // Find all others values by a value of one scale 
+    public void findEachValue(Scale from){
+        double part1, part2, part3, part4;
         for(int i = 0; i < scales.length; i++){
-           if(scales[i] != from){
+            if(scales[i] != from){
+             // set for each scale the to object 
              Scale to = scales[i];
              /** 
              *   to - pA     from - pA
              *   -------  =  ------
-             *   pB - pA     pA - pB
-             * 
+             *   pB - pA     pB - pA
              * 
              *    part1     part3
              *    -----  = -------
-             *    part2     part4
-             * 
+             *    part2     part4 
              */
-             double part2 = to.getPointB() - to.getPointA();
-             double part3 = from.getValue() - from.getPointA();
-             double part4 = from.getPointA() - from.getPointB();
+             // to side
+             part2 = to.getPointB() - to.getPointA();
+             // from side
+             part3 = from.getValue() - from.getPointA();
+             part4 = from.getPointB() - from.getPointA();
              // part1 / part2 = part3 / part4
              // part1 = (part3/ part4) * part2
-             double part1 = (part3 / part4) * part2;
-             // to = part1 - to.pointA
+             part1 = (part3 / part4) * part2;
+             
              to.setValue(part1 - to.getPointA());
              
            }
         }
+        
+        
     }
 
     public Scale[] getScales() {

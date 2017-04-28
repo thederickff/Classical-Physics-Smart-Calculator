@@ -5,7 +5,9 @@
  */
 package com.temperatureconverter.test;
 
+import com.temperatureconverter.controller.Converter;
 import com.temperatureconverter.model.Scale;
+
 
 /**
  *
@@ -14,10 +16,19 @@ import com.temperatureconverter.model.Scale;
 public class TestVectorScale {
     
     public static void main(String[] args) {
-        Scale[] scales = new Scale[3];
+       
+        Scale scale = new Scale("Derick", "D", 32, 212);
+        Converter cv = new Converter();
         
-        scales[0] = new Scale("Celsius", "C", 10 ,30);
+        scale.setValue(20);
         
-        System.out.println(scales.length);
+        cv.findEachValue(scale);
+        System.out.println( scale.getValue() + " "+ scale.getName() + "'s scale "+"is " + 
+                cv.getScales()[0].getValue() + " " + cv.getScales()[0].getName());
+        System.out.println( scale.getValue() + " "+ scale.getName() + "'s scale "+"is " + 
+                cv.getScales()[1].getValue() + " " + cv.getScales()[1].getName());
+        System.out.println( scale.getValue() + " "+ scale.getName() + "'s scale "+"is " + 
+                cv.getScales()[2].getValue() + " " + cv.getScales()[2].getName());
+        //System.out.println(result);
     }
 }

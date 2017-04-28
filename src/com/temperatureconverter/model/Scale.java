@@ -25,6 +25,15 @@ public class Scale {
         this.pointB = pointB;
     }
 
+    @Override
+    public String toString() {
+        return "[" + "name=" + name + 
+                ", value=" + value + 
+                ", pointA=" + pointA + 
+                ", pointB=" + pointB + ']';
+    }
+
+    
     public String getName() {
         return name;
     }
