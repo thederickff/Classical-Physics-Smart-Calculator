@@ -5,24 +5,51 @@
  */
 package com.temperatureconverter.view;
 
+import com.temperatureconverter.controller.Converter;
+import com.temperatureconverter.model.Scale;
+
 /**
  *
  * @author derickfelix
  */
 public class Screen extends javax.swing.JFrame {
 
+    
+    private Converter converter;
     /**
      * Creates new form Screen
      */
     public Screen() {
-        
+ 
+        instanceComponents();
         initComponents();
         configComponents();
     }
+    private void instanceComponents(){
+       this.converter = new Converter();        
+    }
     private void configComponents(){
+        
         this.lblCResult.setVisible(false);
         this.lblScaleName.setText(this.txtScaleName.getText());
         this.lblRScaleName.setText(this.cmbRScale.getSelectedItem().toString());
+        
+        // cmbBox
+        cmbBoxAddItem();
+    }
+    private void cmbBoxAddItem(){
+        
+        Scale[] scales = this.converter.getScales();
+        String name;
+        for (Scale scale : scales) {
+            name = scale.getName();
+            name += " [";
+            name += scale.getSymbol();
+            name += "]";
+            this.cmbFromValue.addItem(name);
+            this.cmbToValue.addItem(name);
+            this.cmbRScale.addItem(name);
+        }
     }
 
     /**
@@ -62,11 +89,11 @@ public class Screen extends javax.swing.JFrame {
         setTitle("Termology - Basic Software");
 
         lblTitle.setFont(new java.awt.Font("DejaVu Sans", 1, 24)); // NOI18N
-        lblTitle.setText("Termology");
+        lblTitle.setText("Termodynamics");
 
         panelRelations.setBorder(javax.swing.BorderFactory.createTitledBorder("Relations"));
 
-        cmbRScale.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Kelvin [K]", "Fahrenheit [F]", "Celsius [C]" }));
+        cmbRScale.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Select Relational Scale" }));
         cmbRScale.addItemListener(new java.awt.event.ItemListener() {
             public void itemStateChanged(java.awt.event.ItemEvent evt) {
                 cmbRScaleItemStateChanged(evt);
@@ -154,7 +181,7 @@ public class Screen extends javax.swing.JFrame {
                 .addContainerGap()
                 .addComponent(lblRScaleName, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panelRScaleInputLayout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addContainerGap(16, Short.MAX_VALUE)
                 .addGroup(panelRScaleInputLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(lblRPBScale, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(lblRPAScale))
@@ -190,10 +217,10 @@ public class Screen extends javax.swing.JFrame {
                     .addComponent(lblScaleNameInput, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(panelScaleInput, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(txtScaleName))
-                .addGap(63, 63, 63)
+                .addGap(53, 53, 53)
                 .addGroup(panelRelationsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(panelRScaleInput, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(cmbRScale, javax.swing.GroupLayout.PREFERRED_SIZE, 178, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(cmbRScale, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addContainerGap(14, Short.MAX_VALUE))
         );
         panelRelationsLayout.setVerticalGroup(
@@ -214,12 +241,19 @@ public class Screen extends javax.swing.JFrame {
 
         panelConverter.setBorder(javax.swing.BorderFactory.createTitledBorder("Converter"));
 
-        cmbFromValue.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Farenheit [F]", "Celsius [C]", "Kelvin [K]" }));
+        txtFromValue.setDisabledTextColor(new java.awt.Color(0, 0, 0));
+        txtFromValue.addCaretListener(new javax.swing.event.CaretListener() {
+            public void caretUpdate(javax.swing.event.CaretEvent evt) {
+                txtFromValueCaretUpdate(evt);
+            }
+        });
 
-        cmbToValue.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Celsius [C]", "Farenheit [F]", "Kelvin [K]" }));
-
-        txtToValue.setFont(new java.awt.Font("DejaVu Sans", 1, 12)); // NOI18N
         txtToValue.setDisabledTextColor(new java.awt.Color(0, 0, 0));
+        txtToValue.addCaretListener(new javax.swing.event.CaretListener() {
+            public void caretUpdate(javax.swing.event.CaretEvent evt) {
+                txtToValueCaretUpdate(evt);
+            }
+        });
         txtToValue.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 txtToValueActionPerformed(evt);
@@ -290,10 +324,10 @@ public class Screen extends javax.swing.JFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(panelRelations, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(panelConverter, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addContainerGap(14, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
-        setSize(new java.awt.Dimension(944, 404));
+        setSize(new java.awt.Dimension(944, 396));
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
@@ -315,6 +349,16 @@ public class Screen extends javax.swing.JFrame {
     private void txtToValueActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtToValueActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_txtToValueActionPerformed
+
+    private void txtFromValueCaretUpdate(javax.swing.event.CaretEvent evt) {//GEN-FIRST:event_txtFromValueCaretUpdate
+        // From txt
+        this.converter.caretUpdate(txtToValue, cmbFromValue, cmbToValue, txtFromValue, txtToValue);
+    }//GEN-LAST:event_txtFromValueCaretUpdate
+
+    private void txtToValueCaretUpdate(javax.swing.event.CaretEvent evt) {//GEN-FIRST:event_txtToValueCaretUpdate
+        // To txt
+        this.converter.caretUpdate(txtToValue, cmbFromValue, cmbToValue, txtFromValue, txtToValue);
+    }//GEN-LAST:event_txtToValueCaretUpdate
 
     /**
      * @param args the command line arguments

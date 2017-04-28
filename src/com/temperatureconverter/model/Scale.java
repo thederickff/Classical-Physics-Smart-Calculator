@@ -13,12 +13,16 @@ public class Scale {
     
     private String name;
     private String symbol;
-    private int value;
+    private double value;
+    private int pointA;
+    private int pointB;
     
-    public Scale(String name, String symbol, int value){
+    public Scale(String name, String symbol, int pointA, int pointB){
         this.name = name;
         this.symbol = symbol;
-        this.value = value;
+        this.value = 0;
+        this.pointA = pointA;
+        this.pointB = pointB;
     }
 
     public String getName() {
@@ -37,12 +41,20 @@ public class Scale {
         this.symbol = symbol;
     }
 
-    public int getValue() {
+    public double getValue() {
         return value;
     }
 
-    public void setValue(int value) {
+    public void setValue(double value) {
         this.value = value;
+    }
+
+    public int getPointA() {
+        return pointA;
+    }
+
+    public int getPointB() {
+        return pointB;
     }
     
     
