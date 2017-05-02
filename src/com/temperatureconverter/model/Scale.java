@@ -22,15 +22,16 @@ public class Scale {
         this.symbol = symbol;
         this.value = 0;
         this.pointA = pointA;
-        this.pointB = pointB;
+        this.pointB = pointB - pointA;
     }
 
     @Override
     public String toString() {
-        return "[" + "name=" + name + 
-                ", value=" + value + 
-                ", pointA=" + pointA + 
-                ", pointB=" + pointB + ']';
+        
+        return "[ " + 
+                "name = "   + name + 
+                "\nvalue = "  + value + 
+                " ]";
     }
 
     
