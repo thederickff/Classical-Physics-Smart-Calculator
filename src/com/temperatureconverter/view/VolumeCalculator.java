@@ -26,6 +26,8 @@ public class VolumeCalculator extends javax.swing.JFrame {
         this.spnHeight.setEnabled(false);
         this.spnWidth.setEnabled(false);
         this.spnLength.setEnabled(false);
+        this.spnVolume.setEnabled(false);
+        this.lblResult.setText("");
     }
     
 
@@ -56,6 +58,8 @@ public class VolumeCalculator extends javax.swing.JFrame {
         lblResult = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setTitle("Volume Calculator");
+        setResizable(false);
 
         paneSelect.setBorder(javax.swing.BorderFactory.createEtchedBorder());
 
@@ -260,12 +264,14 @@ public class VolumeCalculator extends javax.swing.JFrame {
         );
 
         pack();
+        setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
     private void setZeroValues(){
         this.spnHeight.setValue(0);
         this.spnWidth.setValue(0);
         this.spnLength.setValue(0);
         this.spnVolume.setValue(0);
+        this.lblResult.setText("");
     }
     
     private void btnLengthActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLengthActionPerformed
@@ -275,6 +281,7 @@ public class VolumeCalculator extends javax.swing.JFrame {
         this.spnLength.setEnabled(false);
         this.spnVolume.setEnabled(true);
         this.guestResult = 'l';
+        this.lblTitleResult.setText("Length");
         setZeroValues();
     }//GEN-LAST:event_btnLengthActionPerformed
 
@@ -285,7 +292,7 @@ public class VolumeCalculator extends javax.swing.JFrame {
         this.spnLength.setEnabled(true);
         this.spnVolume.setEnabled(true);
         this.guestResult = 'w';
-        
+        this.lblTitleResult.setText("Width");
         setZeroValues();
     }//GEN-LAST:event_btnWidthActionPerformed
 
@@ -296,7 +303,7 @@ public class VolumeCalculator extends javax.swing.JFrame {
         this.spnLength.setEnabled(true);
         this.spnVolume.setEnabled(true);
         this.guestResult = 'h';
-        
+        this.lblTitleResult.setText("Height");
         setZeroValues();
         
     }//GEN-LAST:event_btnHeightActionPerformed
@@ -308,6 +315,7 @@ public class VolumeCalculator extends javax.swing.JFrame {
         this.spnLength.setEnabled(true);
         this.spnVolume.setEnabled(false);
         this.guestResult = 'v';
+        this.lblTitleResult.setText("Volume");
         setZeroValues();
     }//GEN-LAST:event_btnVolumeActionPerformed
 
@@ -318,34 +326,35 @@ public class VolumeCalculator extends javax.swing.JFrame {
         double height = (Integer) this.spnHeight.getValue();
         double volume = (Integer) this.spnVolume.getValue();
         String result = "<html>";
-        
+        String formated;
         switch(guestResult){
             case 'v':
                 volume = length * width * height;
-               
-                
-                result += volume + " m<sup>3</sup>";
+                formated = String.format("%.2f", volume);
+                result += formated + " m<sup>3</sup>";
                 break;
             case 'l':
-                length += (width * height) / volume;
-                
-                result += length + " m";
+                length += (volume / height)/ width;
+                formated = String.format("%.2f", length);
+                result += formated + " m";
                 break;
             case 'w':
-                width += (length * height) / volume;
-                
-                result += width + " m";
+                width += (volume / length)/ height;
+                formated = String.format("%.2f", width);
+                result += formated + " m";
                 break;
             case 'h':
-                height += (length * width) / volume;
-                
-                result += width + " m";
+                height += (volume / length)/ width;
+                formated = String.format("%.2f", height);
+                result += formated + " m";
+                break;
             default:
                 JOptionPane.showMessageDialog(null, "You did not choice a value to find out yet.");
                 break;
         }
         result += "</html>";
         this.lblResult.setText(result);
+        
     }//GEN-LAST:event_btnCalculateActionPerformed
 
     /**
