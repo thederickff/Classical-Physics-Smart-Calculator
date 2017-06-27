@@ -273,6 +273,37 @@ public class VolumeCalculator extends javax.swing.JFrame {
         this.spnVolume.setValue(0);
         this.lblResult.setText("");
     }
+    private String removeLastZero(String number) {
+
+        String string = "";
+        String noPoint = "";
+        if (number.endsWith("0")) {
+            for (int i = 0; i < number.length() - 1; i++) {
+                // get the value of the number
+                string += number.charAt(i);
+            }
+
+            if (string.endsWith("0")) {
+                for (int i = 0; i < string.length() - 2; i++) {
+                    // get the value of the number
+                    noPoint += number.charAt(i);
+                }
+
+                return noPoint;
+            }
+
+            return string;
+        }
+
+        return number;
+    }
+     private String formateNumber(Object arg) {
+        String formated;
+        formated = String.format("%.2f", arg);
+        formated = removeLastZero(formated);
+        
+        return formated;
+    }
     
     private void btnLengthActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLengthActionPerformed
         // TODO add your handling code here:
@@ -330,23 +361,19 @@ public class VolumeCalculator extends javax.swing.JFrame {
         switch(guestResult){
             case 'v':
                 volume = length * width * height;
-                formated = String.format("%.2f", volume);
-                result += formated + " m<sup>3</sup>";
+                result += formateNumber(volume) + " V<sup>3</sup>";
                 break;
             case 'l':
                 length += (volume / height)/ width;
-                formated = String.format("%.2f", length);
-                result += formated + " m";
+                result += formateNumber(length) + " l";
                 break;
             case 'w':
                 width += (volume / length)/ height;
-                formated = String.format("%.2f", width);
-                result += formated + " m";
+                result += formateNumber(width) + " w";
                 break;
             case 'h':
                 height += (volume / length)/ width;
-                formated = String.format("%.2f", height);
-                result += formated + " m";
+                result += formateNumber(height) + " h";
                 break;
             default:
                 JOptionPane.showMessageDialog(null, "You did not choice a value to find out yet.");
