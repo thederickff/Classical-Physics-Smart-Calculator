@@ -3,16 +3,13 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package com.temperatureconverter.test;
+package com.derick.test;
 
 /**
  *
  * @author derickfelix
  */
-public class TestVolumeCalculator {
+public interface Adder {
     
-    public static void main(String[] args) {
-        
-         
-    }
+    long add(long... operands);
 }

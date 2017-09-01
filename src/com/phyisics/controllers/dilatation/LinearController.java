@@ -3,12 +3,12 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package com.temperatureconverter.controller;
+package com.phyisics.controllers.dilatation;
 
 /**
  *
  * @author derickfelix
  */
-public class VolumeController {
+public class LinearController {
     
 }
