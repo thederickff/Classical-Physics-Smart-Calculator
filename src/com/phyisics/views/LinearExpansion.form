@@ -71,7 +71,7 @@
               <Group type="102" attributes="0">
                   <EmptySpace max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="0" attributes="0">
-                      <Component id="btnCalculate" alignment="1" pref="242" max="32767" attributes="0"/>
+                      <Component id="btnCalculate" alignment="1" pref="273" max="32767" attributes="0"/>
                       <Component id="lblTitleSelected" alignment="1" max="32767" attributes="0"/>
                       <Component id="lblResult" alignment="0" max="32767" attributes="0"/>
                   </Group>
@@ -118,7 +118,7 @@
         <Component class="javax.swing.JLabel" name="lblResult">
           <Properties>
             <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-              <Font name="Noto Sans" size="14" style="0"/>
+              <Font name="Noto Sans" size="18" style="1"/>
             </Property>
             <Property name="horizontalAlignment" type="int" value="0"/>
             <Property name="text" type="java.lang.String" value="00"/>

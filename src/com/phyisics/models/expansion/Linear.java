@@ -19,7 +19,7 @@ public class Linear {
      * @param deltaT - is the temperature ΔT
      * @return alpha - is the coefficient α
      */
-    protected double alpha(double initialL, double finalL, double deltaT) {
+    public double alpha(double initialL, double finalL, double deltaT) {
         double alpha = (finalL - initialL) / (initialL * deltaT);
         return formatNumber(alpha, 7);
     }
@@ -32,7 +32,7 @@ public class Linear {
      * @param alpha - is the coefficient α
      * @return deltaL - is the the length - ΔL
      */
-    protected double deltaL(double initialL, double deltaT, double alpha) {
+    public double deltaL(double initialL, double deltaT, double alpha) {
         double deltaL = initialL * alpha * deltaT;
         return deltaL;
     }
@@ -45,7 +45,7 @@ public class Linear {
      * @param alpha - is the coefficient α
      * @return deltaT - is the temperature ΔT
      */
-    protected double deltaTL(double initialL, double finalL, double alpha) {
+    public double deltaTL(double initialL, double finalL, double alpha) {
         double deltaT = (finalL - initialL) / (initialL * alpha);
         return formatNumber(deltaT, 1);
     }
@@ -57,7 +57,7 @@ public class Linear {
      * @param deltaL - is the the length - ΔL
      * @return initialL - is the the length - L0
      */
-    protected double initialL(double finalL, double deltaL) {
+    public double initialL(double finalL, double deltaL) {
         return finalL - deltaL;
     }
 
@@ -68,7 +68,7 @@ public class Linear {
      * @param deltaL - is the the length - ΔL
      * @return initialL - is the the length - L1
      */
-    protected double finalL(double initialL, double deltaL) {
+    public double finalL(double initialL, double deltaL) {
         return initialL + deltaL;
     }
 
@@ -79,7 +79,7 @@ public class Linear {
      * @param e 5
      * @return 3.4674 as result
      */   
-    protected double formatNumber(double number, int e) {
+    public double formatNumber(double number, int e) {
         return Double.parseDouble(String.format("%." + e + "f", number));
     }
 

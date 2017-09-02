@@ -37,7 +37,7 @@ public class LinearExpansion extends javax.swing.JFrame {
      * @param al - txtAlpha
      */
     private void selectEnabledComponents(boolean il, boolean it, boolean fl, boolean ft, boolean al) {
-        // PlaceHolder
+        // Handle the placeholder by the desired field
         lc.placeHolder(il, txtInitialL, "2");
         lc.placeHolder(it, txtInitialT, "43.2");
         lc.placeHolder(fl, txtFinalL, "2.24");
@@ -55,6 +55,9 @@ public class LinearExpansion extends javax.swing.JFrame {
         this.lblTitleFinalL.setEnabled(fl);
         this.lblTitleFinalT.setEnabled(ft);
         this.lblTitleAlpha.setEnabled(al);
+        // Update Result Label
+        lblResult.setForeground(Color.darkGray);
+        lblResult.setText("00");
     }
 
     /**
@@ -107,7 +110,7 @@ public class LinearExpansion extends javax.swing.JFrame {
         lblTitleSelected.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         lblTitleSelected.setText("Selected");
 
-        lblResult.setFont(new java.awt.Font("Noto Sans", 0, 14)); // NOI18N
+        lblResult.setFont(new java.awt.Font("Noto Sans", 1, 18)); // NOI18N
         lblResult.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         lblResult.setText("00");
 
@@ -118,7 +121,7 @@ public class LinearExpansion extends javax.swing.JFrame {
             .addGroup(paneResultLayout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(paneResultLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(btnCalculate, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 242, Short.MAX_VALUE)
+                    .addComponent(btnCalculate, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 273, Short.MAX_VALUE)
                     .addComponent(lblTitleSelected, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(lblResult, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addContainerGap())
@@ -382,47 +385,19 @@ public class LinearExpansion extends javax.swing.JFrame {
 
     private void btnCalculateActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCalculateActionPerformed
         // TODO add your handling code here:
-
         double initialL, initialT, finalL, finalT, alpha;
-        
+
         try {
             initialL = Double.parseDouble(txtInitialL.getText());
             finalL = Double.parseDouble(txtFinalL.getText());
             initialT = Double.parseDouble(txtInitialT.getText());
             finalT = Double.parseDouble(txtFinalT.getText());
             alpha = Double.parseDouble(txtAlpha.getText());
+            // Handle the operation by the selected one
+            lc.handleOperations(selected, lblResult, initialL, finalL, initialT, finalT, alpha);
         } catch (NumberFormatException e) {
             lblResult.setForeground(Color.red.darker());
             lblResult.setText("Try to put numbers, ex: 3.43e-2");
-        }
-
-        switch (selected) {
-            // Initial Length
-            case 'l':
-                // code
-                break;
-            // Final Length
-            case 'L':
-                // code
-                break;
-            // Initial Temperature
-            case 't':
-                // code
-                break;
-            // Final Temperature
-            case 'T':
-                // code
-                break;
-            // Coefficient
-            case 'a':
-                // code
-                break;
-            // None
-            default:
-                // code
-                lblResult.setForeground(Color.magenta.darker());
-                lblResult.setText("You didn't select a type yet");
-                break;
         }
     }//GEN-LAST:event_btnCalculateActionPerformed
 
