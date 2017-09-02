@@ -5,7 +5,7 @@
  */
 package com.phyisics.views;
 
-import com.phyisics.views.dilatation.LinearForm;
+import com.phyisics.views.expansion.LinearForm;
 import javax.swing.UnsupportedLookAndFeelException;
 
 /**
@@ -33,6 +33,7 @@ public class MainWindow extends javax.swing.JFrame {
         btnLDilatation = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setTitle("Physics");
 
         btnLDilatation.setText("LinearDilatation");
         btnLDilatation.addActionListener(new java.awt.event.ActionListener() {

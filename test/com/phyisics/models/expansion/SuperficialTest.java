@@ -3,8 +3,9 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package com.phyisics.models.dilatation;
+package com.phyisics.models.expansion;
 
+import com.phyisics.models.expansion.Superficial;
 import org.junit.After;
 import org.junit.AfterClass;
 import org.junit.Before;
