@@ -5,6 +5,7 @@
  */
 package com.phyisics.views;
 
+import com.phyisics.controllers.expansion.LinearController;
 import java.awt.Color;
 
 /**
@@ -13,6 +14,7 @@ import java.awt.Color;
  */
 public class LinearExpansion extends javax.swing.JFrame {
 
+    private LinearController lc;
     private char selected;
 
     /**
@@ -20,6 +22,7 @@ public class LinearExpansion extends javax.swing.JFrame {
      */
     public LinearExpansion() {
         initComponents();
+        lc = new LinearController();
         selectEnabledComponents(false, false, false, false, false);
 
     }
@@ -34,47 +37,24 @@ public class LinearExpansion extends javax.swing.JFrame {
      * @param al - txtAlpha
      */
     private void selectEnabledComponents(boolean il, boolean it, boolean fl, boolean ft, boolean al) {
-        // Place Holder
-        handlePlaceHolder(il, it, fl, ft, al);
+        // PlaceHolder
+        lc.placeHolder(il, txtInitialL, "2");
+        lc.placeHolder(it, txtInitialT, "43.2");
+        lc.placeHolder(fl, txtFinalL, "2.24");
+        lc.placeHolder(ft, txtFinalT, "243.2");
+        lc.placeHolder(al, txtAlpha, "6.4e-6");
+        // TextFields
         this.txtInitialL.setEnabled(il);
         this.txtInitialT.setEnabled(it);
         this.txtFinalL.setEnabled(fl);
         this.txtFinalT.setEnabled(ft);
         this.txtAlpha.setEnabled(al);
+        // Labels
         this.lblTitleInitialL.setEnabled(il);
         this.lblTitleInitialT.setEnabled(it);
         this.lblTitleFinalL.setEnabled(fl);
         this.lblTitleFinalT.setEnabled(ft);
         this.lblTitleAlpha.setEnabled(al);
-    }
-
-    private void handlePlaceHolder(boolean il, boolean it, boolean fl, boolean ft, boolean al) {
-        if (il) {
-            txtInitialL.setText("");
-        } else {
-            txtInitialL.setText("2");
-        }
-        if (it) {
-            txtInitialT.setText("");
-        } else {
-            txtInitialT.setText("40");
-        }
-        if (fl) {
-            txtFinalL.setText("");
-        } else {
-            txtFinalL.setText("2.24");
-        }
-        if (ft) {
-            txtFinalT.setText("");
-        } else {
-            txtFinalT.setText("240");
-        }
-
-        if (al) {
-            txtAlpha.setText("");
-        } else {
-            txtAlpha.setText("6.4e-6");
-        }
     }
 
     /**
