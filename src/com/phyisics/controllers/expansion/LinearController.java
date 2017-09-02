@@ -20,7 +20,6 @@ public class LinearController {
 
     public LinearController() {
         this.linear = new Linear();
-
     }
 
     /**
