@@ -5,7 +5,6 @@
  */
 package com.phyisics.views;
 
-import com.phyisics.views.expansion.LinearForm;
 import javax.swing.UnsupportedLookAndFeelException;
 
 /**
@@ -75,7 +74,7 @@ public class MainWindow extends javax.swing.JFrame {
 
     private void btnLDilatationActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLDilatationActionPerformed
         // TODO add your handling code here:
-        LinearForm lf = new LinearForm();
+        LinearExpansion lf = new LinearExpansion();
         
         lf.setVisible(true);
         this.dispose();

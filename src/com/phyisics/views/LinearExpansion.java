@@ -3,27 +3,41 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package com.phyisics.views.expansion;
+package com.phyisics.views;
 
 /**
  *
  * @author derickfelix
  */
-public class LinearForm extends javax.swing.JFrame {
+public class LinearExpansion extends javax.swing.JFrame {
 
     /**
      * Creates new form DilatationForm
      */
-    public LinearForm() {
+    public LinearExpansion() {
         initComponents();
-        disableComponents();
+        selectEnabledComponents(false, false, false, false, false);
     }
-    private void disableComponents() {
-        this.txtInitialL.setEnabled(false);
-        this.txtInitialT.setEnabled(false);
-        this.txtFinalL.setEnabled(false);
-        this.txtFinalT.setEnabled(false);
-        this.txtAlpha.setEnabled(false);
+    
+    /**
+     * Change the Enabled for each elements
+     * @param il - txtInitialL
+     * @param it - txtInitialT
+     * @param fl - txtFinalL
+     * @param ft - txtFinalT
+     * @param al - txtAlpha
+     */
+    private void selectEnabledComponents(boolean il, boolean it, boolean fl, boolean ft, boolean al) {
+        this.txtInitialL.setEnabled(il);
+        this.txtInitialT.setEnabled(it);
+        this.txtFinalL.setEnabled(fl);
+        this.txtFinalT.setEnabled(ft);
+        this.txtAlpha.setEnabled(al);
+        this.lblTitleInitialL.setEnabled(il);
+        this.lblTitleInitialT.setEnabled(it);
+        this.lblTitleFinalL.setEnabled(fl);
+        this.lblTitleFinalT.setEnabled(ft);
+        this.lblTitleAlpha.setEnabled(al);
     }
 
     /**
@@ -36,7 +50,7 @@ public class LinearForm extends javax.swing.JFrame {
     private void initComponents() {
 
         paneResult = new javax.swing.JPanel();
-        btnCalcule = new javax.swing.JButton();
+        btnCalculate = new javax.swing.JButton();
         lblTitleSelected = new javax.swing.JLabel();
         lblResult = new javax.swing.JLabel();
         paneValues = new javax.swing.JPanel();
@@ -53,18 +67,18 @@ public class LinearForm extends javax.swing.JFrame {
         txtFinalL = new javax.swing.JTextField();
         paneSelect = new javax.swing.JPanel();
         btnAlpha = new javax.swing.JButton();
-        btnTemperature = new javax.swing.JButton();
-        btnLength = new javax.swing.JButton();
-        btnLength1 = new javax.swing.JButton();
-        btnLength2 = new javax.swing.JButton();
+        btnInitialT = new javax.swing.JButton();
+        btnFinalT = new javax.swing.JButton();
+        btnInitialL = new javax.swing.JButton();
+        btnFinalL = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Thermodynamics - Linear Expansion");
 
         paneResult.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Result", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Dialog", 0, 14))); // NOI18N
 
-        btnCalcule.setFont(new java.awt.Font("Noto Sans", 0, 14)); // NOI18N
-        btnCalcule.setText("Calcule");
+        btnCalculate.setFont(new java.awt.Font("Noto Sans", 0, 14)); // NOI18N
+        btnCalculate.setText("Calculate");
 
         lblTitleSelected.setFont(new java.awt.Font("Noto Sans", 0, 14)); // NOI18N
         lblTitleSelected.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
@@ -81,7 +95,7 @@ public class LinearForm extends javax.swing.JFrame {
             .addGroup(paneResultLayout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(paneResultLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(btnCalcule, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(btnCalculate, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 151, Short.MAX_VALUE)
                     .addComponent(lblTitleSelected, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(lblResult, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addContainerGap())
@@ -89,13 +103,13 @@ public class LinearForm extends javax.swing.JFrame {
         paneResultLayout.setVerticalGroup(
             paneResultLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(paneResultLayout.createSequentialGroup()
-                .addContainerGap(15, Short.MAX_VALUE)
-                .addComponent(btnCalcule)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addContainerGap()
+                .addComponent(btnCalculate)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(lblTitleSelected)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(lblResult)
-                .addContainerGap())
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         paneValues.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Linear Expansion", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Dialog", 0, 18))); // NOI18N
@@ -118,21 +132,26 @@ public class LinearForm extends javax.swing.JFrame {
 
         txtInitialL.setFont(new java.awt.Font("Noto Sans", 0, 14)); // NOI18N
         txtInitialL.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        txtInitialL.setToolTipText("Enter with the Initial Length");
 
         txtInitialT.setFont(new java.awt.Font("Noto Sans", 0, 14)); // NOI18N
         txtInitialT.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        txtInitialT.setToolTipText("Enter with the Initial Temperature");
 
         txtAlpha.setFont(new java.awt.Font("Noto Sans", 0, 14)); // NOI18N
         txtAlpha.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        txtAlpha.setToolTipText("Enter with the Coefficient");
 
         lblTitleFinalT.setFont(new java.awt.Font("Noto Sans", 0, 18)); // NOI18N
         lblTitleFinalT.setText("<html>&theta;<sub>F</sub></html>");
 
         txtFinalT.setFont(new java.awt.Font("Noto Sans", 0, 14)); // NOI18N
         txtFinalT.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        txtFinalT.setToolTipText("Enter with the Final Temperature");
 
         txtFinalL.setFont(new java.awt.Font("Noto Sans", 0, 14)); // NOI18N
         txtFinalL.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        txtFinalL.setToolTipText("Enter with the Final Length");
 
         javax.swing.GroupLayout paneValuesLayout = new javax.swing.GroupLayout(paneValues);
         paneValues.setLayout(paneValuesLayout);
@@ -164,8 +183,8 @@ public class LinearForm extends javax.swing.JFrame {
         );
         paneValuesLayout.setVerticalGroup(
             paneValuesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, paneValuesLayout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addGroup(paneValuesLayout.createSequentialGroup()
+                .addGap(51, 51, 51)
                 .addGroup(paneValuesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(lblLinearExpansionIcon)
                     .addGroup(paneValuesLayout.createSequentialGroup()
@@ -189,25 +208,50 @@ public class LinearForm extends javax.swing.JFrame {
                 .addGroup(paneValuesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(txtAlpha, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(lblTitleAlpha, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(58, 58, 58))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         paneSelect.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Select One", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Dialog", 0, 14))); // NOI18N
 
         btnAlpha.setFont(new java.awt.Font("Noto Sans", 0, 14)); // NOI18N
-        btnAlpha.setText("Alpha");
+        btnAlpha.setText("Linear Coefficient");
+        btnAlpha.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnAlphaActionPerformed(evt);
+            }
+        });
 
-        btnTemperature.setFont(new java.awt.Font("Noto Sans", 0, 14)); // NOI18N
-        btnTemperature.setText("<html>&theta;<sub>I</sub></html>");
+        btnInitialT.setFont(new java.awt.Font("Noto Sans", 0, 14)); // NOI18N
+        btnInitialT.setText("Initial Temperature");
+        btnInitialT.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnInitialTActionPerformed(evt);
+            }
+        });
 
-        btnLength.setFont(new java.awt.Font("Noto Sans", 0, 14)); // NOI18N
-        btnLength.setText("<html>&theta;<sub>F</sub></html>");
+        btnFinalT.setFont(new java.awt.Font("Noto Sans", 0, 14)); // NOI18N
+        btnFinalT.setText("FinalTemperature");
+        btnFinalT.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnFinalTActionPerformed(evt);
+            }
+        });
 
-        btnLength1.setFont(new java.awt.Font("Noto Sans", 0, 14)); // NOI18N
-        btnLength1.setText("<html>L<sub>I</sub></html>");
+        btnInitialL.setFont(new java.awt.Font("Noto Sans", 0, 14)); // NOI18N
+        btnInitialL.setText("Initial Length");
+        btnInitialL.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnInitialLActionPerformed(evt);
+            }
+        });
 
-        btnLength2.setFont(new java.awt.Font("Noto Sans", 0, 14)); // NOI18N
-        btnLength2.setText("<html>L<sub>F</sub></html>");
+        btnFinalL.setFont(new java.awt.Font("Noto Sans", 0, 14)); // NOI18N
+        btnFinalL.setText("Final Length");
+        btnFinalL.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnFinalLActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout paneSelectLayout = new javax.swing.GroupLayout(paneSelect);
         paneSelect.setLayout(paneSelectLayout);
@@ -216,11 +260,11 @@ public class LinearForm extends javax.swing.JFrame {
             .addGroup(paneSelectLayout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(paneSelectLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(btnTemperature)
+                    .addComponent(btnInitialT, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(btnAlpha, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(btnLength)
-                    .addComponent(btnLength1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 140, Short.MAX_VALUE)
-                    .addComponent(btnLength2, javax.swing.GroupLayout.DEFAULT_SIZE, 140, Short.MAX_VALUE))
+                    .addComponent(btnFinalT, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(btnInitialL, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(btnFinalL, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addContainerGap())
         );
         paneSelectLayout.setVerticalGroup(
@@ -228,13 +272,13 @@ public class LinearForm extends javax.swing.JFrame {
             .addGroup(paneSelectLayout.createSequentialGroup()
                 .addComponent(btnAlpha)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(btnTemperature, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(btnInitialL)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(btnLength, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(btnFinalL)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(btnLength1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(btnInitialT)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(btnLength2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(btnFinalT)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
@@ -245,7 +289,7 @@ public class LinearForm extends javax.swing.JFrame {
             .addGroup(layout.createSequentialGroup()
                 .addGap(4, 4, 4)
                 .addComponent(paneValues, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(paneResult, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(paneSelect, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
@@ -268,13 +312,43 @@ public class LinearForm extends javax.swing.JFrame {
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
+    private void btnAlphaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAlphaActionPerformed
+        // TODO add your handling code here:
+        selectEnabledComponents(true, true, true, true, false);
+        lblTitleSelected.setText("Linear Coefficient");
+    }//GEN-LAST:event_btnAlphaActionPerformed
+
+    private void btnInitialTActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnInitialTActionPerformed
+        // TODO add your handling code here:
+        selectEnabledComponents(true, false, true, true, true);
+        lblTitleSelected.setText("Initial Temperature");
+    }//GEN-LAST:event_btnInitialTActionPerformed
+
+    private void btnFinalTActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnFinalTActionPerformed
+        // TODO add your handling code here:
+        selectEnabledComponents(true, true, true, false, true);
+        lblTitleSelected.setText("Final Temperature");
+    }//GEN-LAST:event_btnFinalTActionPerformed
+
+    private void btnInitialLActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnInitialLActionPerformed
+        // TODO add your handling code here:
+        selectEnabledComponents(false, true, true, true, true);
+        lblTitleSelected.setText("Initial Length");
+    }//GEN-LAST:event_btnInitialLActionPerformed
+
+    private void btnFinalLActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnFinalLActionPerformed
+        // TODO add your handling code here:
+        selectEnabledComponents(true, true, false, true, true);
+        lblTitleSelected.setText("Final Length");
+    }//GEN-LAST:event_btnFinalLActionPerformed
+
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnAlpha;
-    private javax.swing.JButton btnCalcule;
-    private javax.swing.JButton btnLength;
-    private javax.swing.JButton btnLength1;
-    private javax.swing.JButton btnLength2;
-    private javax.swing.JButton btnTemperature;
+    private javax.swing.JButton btnCalculate;
+    private javax.swing.JButton btnFinalL;
+    private javax.swing.JButton btnFinalT;
+    private javax.swing.JButton btnInitialL;
+    private javax.swing.JButton btnInitialT;
     private javax.swing.JLabel lblLinearExpansionIcon;
     private javax.swing.JLabel lblResult;
     private javax.swing.JLabel lblTitleAlpha;
