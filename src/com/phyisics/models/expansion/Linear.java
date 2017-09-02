@@ -39,7 +39,7 @@ public class Linear {
 
     /**
      * ΔT = ΔL / αLi
-     *
+     * 
      * @param initialL - is the the length - L0
      * @param finalL - is the the length - L1
      * @param alpha - is the coefficient α

@@ -38,7 +38,6 @@ public class LinearExpansion extends javax.swing.JFrame {
      */
     private void selectEnabledComponents(boolean il, boolean it, boolean fl, boolean ft, boolean al) {
         // Handle the placeholder by the desired field
-        lc.placeHolder(il, txtInitialL, "2");
         lc.placeHolder(it, txtInitialT, "43.2");
         lc.placeHolder(fl, txtFinalL, "2.24");
         lc.placeHolder(ft, txtFinalT, "243.2");
@@ -89,8 +88,12 @@ public class LinearExpansion extends javax.swing.JFrame {
         btnAlpha = new javax.swing.JButton();
         btnInitialT = new javax.swing.JButton();
         btnFinalT = new javax.swing.JButton();
-        btnInitialL = new javax.swing.JButton();
         btnFinalL = new javax.swing.JButton();
+        paneMoreInformation = new javax.swing.JPanel();
+        lblTitleDeltaL = new javax.swing.JLabel();
+        lblTitleDeltaT = new javax.swing.JLabel();
+        lblDeltaL = new javax.swing.JLabel();
+        lblDeltaT = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Thermodynamics - Linear Expansion");
@@ -121,7 +124,7 @@ public class LinearExpansion extends javax.swing.JFrame {
             .addGroup(paneResultLayout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(paneResultLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(btnCalculate, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 273, Short.MAX_VALUE)
+                    .addComponent(btnCalculate, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(lblTitleSelected, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(lblResult, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addContainerGap())
@@ -131,9 +134,9 @@ public class LinearExpansion extends javax.swing.JFrame {
             .addGroup(paneResultLayout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(btnCalculate)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(lblTitleSelected)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(lblResult)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
@@ -145,15 +148,19 @@ public class LinearExpansion extends javax.swing.JFrame {
         lblLinearExpansionIcon.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/phyisics/resources/linear_expansion.jpg"))); // NOI18N
 
         lblTitleInitialL.setFont(new java.awt.Font("Noto Sans", 0, 18)); // NOI18N
+        lblTitleInitialL.setForeground(new java.awt.Color(0, 84, 140));
         lblTitleInitialL.setText("<html>L<sub>I</sub></html>");
 
         lblTitleFinalL.setFont(new java.awt.Font("Noto Sans", 0, 18)); // NOI18N
+        lblTitleFinalL.setForeground(new java.awt.Color(0, 84, 140));
         lblTitleFinalL.setText("<html>L<sub>F</sub></html>");
 
         lblTitleInitialT.setFont(new java.awt.Font("Noto Sans", 0, 18)); // NOI18N
+        lblTitleInitialT.setForeground(new java.awt.Color(180, 24, 2));
         lblTitleInitialT.setText("<html>&theta;<sub>I</sub></html>");
 
         lblTitleAlpha.setFont(new java.awt.Font("Noto Sans", 0, 18)); // NOI18N
+        lblTitleAlpha.setForeground(new java.awt.Color(26, 144, 0));
         lblTitleAlpha.setText("<html>&alpha;</html>");
 
         txtInitialL.setFont(new java.awt.Font("Noto Sans", 0, 14)); // NOI18N
@@ -169,6 +176,7 @@ public class LinearExpansion extends javax.swing.JFrame {
         txtAlpha.setToolTipText("Enter with the Coefficient");
 
         lblTitleFinalT.setFont(new java.awt.Font("Noto Sans", 0, 18)); // NOI18N
+        lblTitleFinalT.setForeground(new java.awt.Color(180, 24, 2));
         lblTitleFinalT.setText("<html>&theta;<sub>F</sub></html>");
 
         txtFinalT.setFont(new java.awt.Font("Noto Sans", 0, 14)); // NOI18N
@@ -210,7 +218,7 @@ public class LinearExpansion extends javax.swing.JFrame {
         paneValuesLayout.setVerticalGroup(
             paneValuesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(paneValuesLayout.createSequentialGroup()
-                .addGap(51, 51, 51)
+                .addGap(79, 79, 79)
                 .addGroup(paneValuesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(lblLinearExpansionIcon)
                     .addGroup(paneValuesLayout.createSequentialGroup()
@@ -266,15 +274,6 @@ public class LinearExpansion extends javax.swing.JFrame {
             }
         });
 
-        btnInitialL.setFont(new java.awt.Font("Noto Sans", 0, 14)); // NOI18N
-        btnInitialL.setText("Initial Length");
-        btnInitialL.setToolTipText("Select the Initial Length");
-        btnInitialL.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnInitialLActionPerformed(evt);
-            }
-        });
-
         btnFinalL.setFont(new java.awt.Font("Noto Sans", 0, 14)); // NOI18N
         btnFinalL.setText("Final Length");
         btnFinalL.setToolTipText("Select the Final Length");
@@ -291,10 +290,9 @@ public class LinearExpansion extends javax.swing.JFrame {
             .addGroup(paneSelectLayout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(paneSelectLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(btnInitialT, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(btnInitialT, javax.swing.GroupLayout.DEFAULT_SIZE, 323, Short.MAX_VALUE)
                     .addComponent(btnAlpha, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(btnFinalT, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(btnInitialL, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(btnFinalL, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addContainerGap())
         );
@@ -303,13 +301,62 @@ public class LinearExpansion extends javax.swing.JFrame {
             .addGroup(paneSelectLayout.createSequentialGroup()
                 .addComponent(btnAlpha)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(btnInitialL)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(btnFinalL)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(btnInitialT)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(btnFinalT)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+        );
+
+        paneMoreInformation.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "More Information", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Dialog", 0, 14))); // NOI18N
+
+        lblTitleDeltaL.setFont(new java.awt.Font("Noto Sans", 0, 18)); // NOI18N
+        lblTitleDeltaL.setForeground(new java.awt.Color(0, 84, 140));
+        lblTitleDeltaL.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        lblTitleDeltaL.setText("<html>&Delta;L: </html>");
+
+        lblTitleDeltaT.setFont(new java.awt.Font("Noto Sans", 0, 18)); // NOI18N
+        lblTitleDeltaT.setForeground(new java.awt.Color(180, 24, 2));
+        lblTitleDeltaT.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        lblTitleDeltaT.setText("<html>&Delta;&theta;: </html>");
+
+        lblDeltaL.setFont(new java.awt.Font("Noto Sans", 0, 18)); // NOI18N
+        lblDeltaL.setForeground(new java.awt.Color(0, 84, 140));
+        lblDeltaL.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        lblDeltaL.setText("0");
+
+        lblDeltaT.setFont(new java.awt.Font("Noto Sans", 0, 18)); // NOI18N
+        lblDeltaT.setForeground(new java.awt.Color(180, 24, 2));
+        lblDeltaT.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        lblDeltaT.setText("0");
+
+        javax.swing.GroupLayout paneMoreInformationLayout = new javax.swing.GroupLayout(paneMoreInformation);
+        paneMoreInformation.setLayout(paneMoreInformationLayout);
+        paneMoreInformationLayout.setHorizontalGroup(
+            paneMoreInformationLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(paneMoreInformationLayout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(paneMoreInformationLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(lblTitleDeltaL)
+                    .addComponent(lblTitleDeltaT, javax.swing.GroupLayout.DEFAULT_SIZE, 110, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(paneMoreInformationLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(lblDeltaT, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(lblDeltaL, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap())
+        );
+        paneMoreInformationLayout.setVerticalGroup(
+            paneMoreInformationLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(paneMoreInformationLayout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(paneMoreInformationLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(lblTitleDeltaL, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(lblDeltaL))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(paneMoreInformationLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(lblTitleDeltaT, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(lblDeltaT))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
@@ -323,8 +370,8 @@ public class LinearExpansion extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(paneResult, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(paneSelect, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addContainerGap())
+                    .addComponent(paneSelect, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(paneMoreInformation, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -335,8 +382,9 @@ public class LinearExpansion extends javax.swing.JFrame {
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(paneSelect, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(paneResult, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
-                .addContainerGap())
+                        .addComponent(paneResult, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(paneMoreInformation, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
         );
 
         pack();
@@ -367,14 +415,6 @@ public class LinearExpansion extends javax.swing.JFrame {
         selected = 'T';
     }//GEN-LAST:event_btnFinalTActionPerformed
 
-    private void btnInitialLActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnInitialLActionPerformed
-        // TODO add your handling code here:
-        selectEnabledComponents(false, true, true, true, true);
-        lblTitleSelected.setText("Initial Length");
-        // set selected as Initial Length
-        selected = 'l';
-    }//GEN-LAST:event_btnInitialLActionPerformed
-
     private void btnFinalLActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnFinalLActionPerformed
         // TODO add your handling code here:
         selectEnabledComponents(true, true, false, true, true);
@@ -394,10 +434,12 @@ public class LinearExpansion extends javax.swing.JFrame {
             finalT = Double.parseDouble(txtFinalT.getText());
             alpha = Double.parseDouble(txtAlpha.getText());
             // Handle the operation by the selected one
-            lc.handleOperations(selected, lblResult, initialL, finalL, initialT, finalT, alpha);
+            lc.handleOperations(selected, lblResult, lblDeltaL, lblDeltaT, initialL, finalL, initialT, finalT, alpha);
+            
         } catch (NumberFormatException e) {
             lblResult.setForeground(Color.red.darker());
             lblResult.setText("Try to put numbers, ex: 3.43e-2");
+            System.out.println("Error: " + e);
         }
     }//GEN-LAST:event_btnCalculateActionPerformed
 
@@ -406,16 +448,20 @@ public class LinearExpansion extends javax.swing.JFrame {
     private javax.swing.JButton btnCalculate;
     private javax.swing.JButton btnFinalL;
     private javax.swing.JButton btnFinalT;
-    private javax.swing.JButton btnInitialL;
     private javax.swing.JButton btnInitialT;
+    private javax.swing.JLabel lblDeltaL;
+    private javax.swing.JLabel lblDeltaT;
     private javax.swing.JLabel lblLinearExpansionIcon;
     private javax.swing.JLabel lblResult;
     private javax.swing.JLabel lblTitleAlpha;
+    private javax.swing.JLabel lblTitleDeltaL;
+    private javax.swing.JLabel lblTitleDeltaT;
     private javax.swing.JLabel lblTitleFinalL;
     private javax.swing.JLabel lblTitleFinalT;
     private javax.swing.JLabel lblTitleInitialL;
     private javax.swing.JLabel lblTitleInitialT;
     private javax.swing.JLabel lblTitleSelected;
+    private javax.swing.JPanel paneMoreInformation;
     private javax.swing.JPanel paneResult;
     private javax.swing.JPanel paneSelect;
     private javax.swing.JPanel paneValues;
