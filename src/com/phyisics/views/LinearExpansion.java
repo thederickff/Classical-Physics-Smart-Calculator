@@ -5,11 +5,15 @@
  */
 package com.phyisics.views;
 
+import java.awt.Color;
+
 /**
  *
  * @author derickfelix
  */
 public class LinearExpansion extends javax.swing.JFrame {
+
+    private char selected;
 
     /**
      * Creates new form DilatationForm
@@ -17,10 +21,12 @@ public class LinearExpansion extends javax.swing.JFrame {
     public LinearExpansion() {
         initComponents();
         selectEnabledComponents(false, false, false, false, false);
+
     }
-    
+
     /**
      * Change the Enabled for each elements
+     *
      * @param il - txtInitialL
      * @param it - txtInitialT
      * @param fl - txtFinalL
@@ -28,6 +34,8 @@ public class LinearExpansion extends javax.swing.JFrame {
      * @param al - txtAlpha
      */
     private void selectEnabledComponents(boolean il, boolean it, boolean fl, boolean ft, boolean al) {
+        // Place Holder
+        handlePlaceHolder(il, it, fl, ft, al);
         this.txtInitialL.setEnabled(il);
         this.txtInitialT.setEnabled(it);
         this.txtFinalL.setEnabled(fl);
@@ -38,6 +46,35 @@ public class LinearExpansion extends javax.swing.JFrame {
         this.lblTitleFinalL.setEnabled(fl);
         this.lblTitleFinalT.setEnabled(ft);
         this.lblTitleAlpha.setEnabled(al);
+    }
+
+    private void handlePlaceHolder(boolean il, boolean it, boolean fl, boolean ft, boolean al) {
+        if (il) {
+            txtInitialL.setText("");
+        } else {
+            txtInitialL.setText("2");
+        }
+        if (it) {
+            txtInitialT.setText("");
+        } else {
+            txtInitialT.setText("40");
+        }
+        if (fl) {
+            txtFinalL.setText("");
+        } else {
+            txtFinalL.setText("2.24");
+        }
+        if (ft) {
+            txtFinalT.setText("");
+        } else {
+            txtFinalT.setText("240");
+        }
+
+        if (al) {
+            txtAlpha.setText("");
+        } else {
+            txtAlpha.setText("6.4e-6");
+        }
     }
 
     /**
@@ -79,6 +116,12 @@ public class LinearExpansion extends javax.swing.JFrame {
 
         btnCalculate.setFont(new java.awt.Font("Noto Sans", 0, 14)); // NOI18N
         btnCalculate.setText("Calculate");
+        btnCalculate.setToolTipText("Calculate the Result");
+        btnCalculate.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnCalculateActionPerformed(evt);
+            }
+        });
 
         lblTitleSelected.setFont(new java.awt.Font("Noto Sans", 0, 14)); // NOI18N
         lblTitleSelected.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
@@ -95,7 +138,7 @@ public class LinearExpansion extends javax.swing.JFrame {
             .addGroup(paneResultLayout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(paneResultLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(btnCalculate, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 151, Short.MAX_VALUE)
+                    .addComponent(btnCalculate, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 242, Short.MAX_VALUE)
                     .addComponent(lblTitleSelected, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(lblResult, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addContainerGap())
@@ -215,6 +258,7 @@ public class LinearExpansion extends javax.swing.JFrame {
 
         btnAlpha.setFont(new java.awt.Font("Noto Sans", 0, 14)); // NOI18N
         btnAlpha.setText("Linear Coefficient");
+        btnAlpha.setToolTipText("Select the Linear Coefficient");
         btnAlpha.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnAlphaActionPerformed(evt);
@@ -223,6 +267,7 @@ public class LinearExpansion extends javax.swing.JFrame {
 
         btnInitialT.setFont(new java.awt.Font("Noto Sans", 0, 14)); // NOI18N
         btnInitialT.setText("Initial Temperature");
+        btnInitialT.setToolTipText("Select the Initial Temperature");
         btnInitialT.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnInitialTActionPerformed(evt);
@@ -231,6 +276,7 @@ public class LinearExpansion extends javax.swing.JFrame {
 
         btnFinalT.setFont(new java.awt.Font("Noto Sans", 0, 14)); // NOI18N
         btnFinalT.setText("FinalTemperature");
+        btnFinalT.setToolTipText("Select the Final Temperature");
         btnFinalT.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnFinalTActionPerformed(evt);
@@ -239,6 +285,7 @@ public class LinearExpansion extends javax.swing.JFrame {
 
         btnInitialL.setFont(new java.awt.Font("Noto Sans", 0, 14)); // NOI18N
         btnInitialL.setText("Initial Length");
+        btnInitialL.setToolTipText("Select the Initial Length");
         btnInitialL.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnInitialLActionPerformed(evt);
@@ -247,6 +294,7 @@ public class LinearExpansion extends javax.swing.JFrame {
 
         btnFinalL.setFont(new java.awt.Font("Noto Sans", 0, 14)); // NOI18N
         btnFinalL.setText("Final Length");
+        btnFinalL.setToolTipText("Select the Final Length");
         btnFinalL.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnFinalLActionPerformed(evt);
@@ -316,31 +364,87 @@ public class LinearExpansion extends javax.swing.JFrame {
         // TODO add your handling code here:
         selectEnabledComponents(true, true, true, true, false);
         lblTitleSelected.setText("Linear Coefficient");
+        // set selected as Alpha
+        selected = 'a';
     }//GEN-LAST:event_btnAlphaActionPerformed
 
     private void btnInitialTActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnInitialTActionPerformed
         // TODO add your handling code here:
         selectEnabledComponents(true, false, true, true, true);
         lblTitleSelected.setText("Initial Temperature");
+        // set selected as Initial Temperature
+        selected = 't';
     }//GEN-LAST:event_btnInitialTActionPerformed
 
     private void btnFinalTActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnFinalTActionPerformed
         // TODO add your handling code here:
         selectEnabledComponents(true, true, true, false, true);
         lblTitleSelected.setText("Final Temperature");
+        // set selected as Final Temperature
+        selected = 'T';
     }//GEN-LAST:event_btnFinalTActionPerformed
 
     private void btnInitialLActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnInitialLActionPerformed
         // TODO add your handling code here:
         selectEnabledComponents(false, true, true, true, true);
         lblTitleSelected.setText("Initial Length");
+        // set selected as Initial Length
+        selected = 'l';
     }//GEN-LAST:event_btnInitialLActionPerformed
 
     private void btnFinalLActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnFinalLActionPerformed
         // TODO add your handling code here:
         selectEnabledComponents(true, true, false, true, true);
         lblTitleSelected.setText("Final Length");
+        // set selected as Final Length
+        selected = 'L';
     }//GEN-LAST:event_btnFinalLActionPerformed
+
+    private void btnCalculateActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCalculateActionPerformed
+        // TODO add your handling code here:
+
+        double initialL, initialT, finalL, finalT, alpha;
+        
+        try {
+            initialL = Double.parseDouble(txtInitialL.getText());
+            finalL = Double.parseDouble(txtFinalL.getText());
+            initialT = Double.parseDouble(txtInitialT.getText());
+            finalT = Double.parseDouble(txtFinalT.getText());
+            alpha = Double.parseDouble(txtAlpha.getText());
+        } catch (NumberFormatException e) {
+            lblResult.setForeground(Color.red.darker());
+            lblResult.setText("Try to put numbers, ex: 3.43e-2");
+        }
+
+        switch (selected) {
+            // Initial Length
+            case 'l':
+                // code
+                break;
+            // Final Length
+            case 'L':
+                // code
+                break;
+            // Initial Temperature
+            case 't':
+                // code
+                break;
+            // Final Temperature
+            case 'T':
+                // code
+                break;
+            // Coefficient
+            case 'a':
+                // code
+                break;
+            // None
+            default:
+                // code
+                lblResult.setForeground(Color.magenta.darker());
+                lblResult.setText("You didn't select a type yet");
+                break;
+        }
+    }//GEN-LAST:event_btnCalculateActionPerformed
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnAlpha;
