@@ -160,4 +160,25 @@ public class LinearController {
             txt.setText(ph);
         }
     }
+
+    public String makeProccess(double initialL, double finalL, double initialT, double finalT) {
+
+        String dl = String.format("%.2f", finalL - initialL);
+        String dt = String.format("%.2f", finalT - initialT);
+        String lidt = String.format("%.2f", initialL * Double.parseDouble(dt));
+        String dllidt = String.format("%.6f", Double.parseDouble(dl) / Double.parseDouble(lidt));
+        
+        String proccess = "ΔL = L - Li\n"
+                + "ΔL = " + finalL + " - " + initialL + "\n"
+                + "ΔL = " + dl + "\n"
+                + "ΔT = T - Ti\n"
+                + "ΔT = "+finalT+" - "+initialT+"\n"
+                + "ΔT = "+finalT+"\n"
+                + "α = ΔL/LiΔT\n"
+                + "α = "+dl+" / "+initialL+" * "+dt+"\n"
+                + "α = "+dl+" / "+lidt+"\n"
+                + "α = "+dllidt+"\n";
+        System.out.println("MAKE PROCCESS \n" + proccess);
+        return proccess;
+    }
 }

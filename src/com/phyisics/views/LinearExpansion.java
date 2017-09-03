@@ -24,7 +24,6 @@ public class LinearExpansion extends javax.swing.JFrame {
         initComponents();
         lc = new LinearController();
         selectEnabledComponents(false, false, false, false, false);
-
     }
 
     /**
@@ -94,6 +93,9 @@ public class LinearExpansion extends javax.swing.JFrame {
         lblTitleDeltaT = new javax.swing.JLabel();
         lblDeltaL = new javax.swing.JLabel();
         lblDeltaT = new javax.swing.JLabel();
+        paneProccess = new javax.swing.JPanel();
+        jScrollPane2 = new javax.swing.JScrollPane();
+        txtaProccess = new javax.swing.JTextArea();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Thermodynamics - Linear Expansion");
@@ -218,7 +220,7 @@ public class LinearExpansion extends javax.swing.JFrame {
         paneValuesLayout.setVerticalGroup(
             paneValuesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(paneValuesLayout.createSequentialGroup()
-                .addGap(79, 79, 79)
+                .addContainerGap()
                 .addGroup(paneValuesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(lblLinearExpansionIcon)
                     .addGroup(paneValuesLayout.createSequentialGroup()
@@ -360,13 +362,32 @@ public class LinearExpansion extends javax.swing.JFrame {
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
+        paneProccess.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Proccess", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Dialog", 0, 14))); // NOI18N
+
+        txtaProccess.setColumns(20);
+        txtaProccess.setRows(5);
+        jScrollPane2.setViewportView(txtaProccess);
+
+        javax.swing.GroupLayout paneProccessLayout = new javax.swing.GroupLayout(paneProccess);
+        paneProccess.setLayout(paneProccessLayout);
+        paneProccessLayout.setHorizontalGroup(
+            paneProccessLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(jScrollPane2, javax.swing.GroupLayout.Alignment.TRAILING)
+        );
+        paneProccessLayout.setVerticalGroup(
+            paneProccessLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(jScrollPane2)
+        );
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addGap(4, 4, 4)
-                .addComponent(paneValues, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(paneValues, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(paneProccess, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(paneResult, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
@@ -378,7 +399,10 @@ public class LinearExpansion extends javax.swing.JFrame {
             .addGroup(layout.createSequentialGroup()
                 .addGap(10, 10, 10)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(paneValues, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(paneValues, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(paneProccess, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(paneSelect, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -449,6 +473,7 @@ public class LinearExpansion extends javax.swing.JFrame {
     private javax.swing.JButton btnFinalL;
     private javax.swing.JButton btnFinalT;
     private javax.swing.JButton btnInitialT;
+    private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JLabel lblDeltaL;
     private javax.swing.JLabel lblDeltaT;
     private javax.swing.JLabel lblLinearExpansionIcon;
@@ -462,6 +487,7 @@ public class LinearExpansion extends javax.swing.JFrame {
     private javax.swing.JLabel lblTitleInitialT;
     private javax.swing.JLabel lblTitleSelected;
     private javax.swing.JPanel paneMoreInformation;
+    private javax.swing.JPanel paneProccess;
     private javax.swing.JPanel paneResult;
     private javax.swing.JPanel paneSelect;
     private javax.swing.JPanel paneValues;
@@ -470,5 +496,6 @@ public class LinearExpansion extends javax.swing.JFrame {
     private javax.swing.JTextField txtFinalT;
     private javax.swing.JTextField txtInitialL;
     private javax.swing.JTextField txtInitialT;
+    private javax.swing.JTextArea txtaProccess;
     // End of variables declaration//GEN-END:variables
 }

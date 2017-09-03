@@ -50,7 +50,20 @@ public class LinearControllerTest {
         double expResult = 6.0E-4;
         double result = Double.parseDouble(instance.calcAlpha(initialL, finalL, initialT, finalT));
         assertEquals(expResult, result, 0.0);
-
+        
+        String proccess = "ΔL = L - Li\n"
+                       + "ΔL = 2.24 - 2.0\n"
+                       + "ΔL = 0.24\n"
+                       + "ΔT = T - Ti\n"
+                       + "ΔT = 200 - 0\n"
+                       + "ΔT = 200\n"
+                       + "α = ΔL/LiΔT\n"
+                       + "α = 0.24 / 2.0 * 200\n"
+                       + "α = 0.24 / 400\n"
+                       + "α = 0.0006\n"
+                       + "α = 6.0e-4";
+        System.out.println(proccess);
+        assertEquals(proccess, instance.makeProccess(5, 5.00654, 15, 65), 0.0);
     }
 
 }

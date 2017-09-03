@@ -45,11 +45,11 @@ public class SuperficialTest {
     @Test
     public void testBeta() {
         System.out.println("beta");
-        double initialS = 200;
-        double finalS = 200.8;
-        double deltaT = 100;
+        double initialS = 400;
+        double finalS = 401;
+        double deltaT = 50;
         Superficial instance = new Superficial();
-        double expResult = 2E-5;
+        double expResult = 2.5E-5;
 
         double result = instance.beta(initialS, finalS, deltaT);
         assertEquals(expResult, result, 0.0);
@@ -62,11 +62,11 @@ public class SuperficialTest {
     @Test
     public void testDeltaS() {
         System.out.println("finalS");
-        double initialS = 200;
-        double deltaT = 100;
-        double beta = 2E-5;
+        double initialS = 400;
+        double deltaT = 50;
+        double beta = 2.5E-5;
         Superficial instance = new Superficial();
-        double expResult = 0.8;
+        double expResult = 1;
         double result = instance.deltaS(initialS, deltaT, beta);
         assertEquals(expResult, result, 0.0);
 
