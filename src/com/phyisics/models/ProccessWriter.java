@@ -69,11 +69,29 @@ public class ProccessWriter {
         return r;
     }
 
-    public String writeInitialT(double deltaT, double finalT) {
+    public String writeDeltaT(double deltaL, double initialL, double alpha, double alphaInitialL) {
+        // ΔT = ΔL / αLi 
+        String r = "ΔT = ΔL / (α * Li) \n";
+        r += "ΔT = " + deltaL + " / (" + alpha + " * " + initialL + ") \n";
+        r += "ΔT = " + deltaL + " / " + alphaInitialL + " \n";
+        r += "ΔT ≃ " + (deltaL / alphaInitialL) + " \n";
+        r += " \n";
+        return r;
+    }
+
+    public String writeInitialT(double initialL, double finalL, double finalT, double alpha) {
+        float deltaL = (float) (finalL - initialL);
+        float alphaInitialL = (float) (alpha * initialL);
+        float deltaT = (float) (deltaL / alphaInitialL);
+        // ΔL = L - Li
+        String r = writeDeltaL(initialL, finalL);
+        // ΔT = ΔL / αLi 
+        r += writeDeltaT(deltaL, initialL, alpha, alphaInitialL);
         // Ti = T - ΔT
-        String r = "Ti = T - ΔT \n";
+        r += "Ti = T - ΔT \n";
         r += "Ti = " + finalT + " - " + deltaT + " \n";
         r += "Ti ≃ " + (finalT - deltaT) + " \n";
+        r += " \n";
         return r;
     }
 
@@ -84,15 +102,13 @@ public class ProccessWriter {
         // ΔL = L - Li
         String r = writeDeltaL(initialL, finalL);
         // ΔT = ΔL / αLi 
-        r += "ΔT = ΔL / (α * Li) \n";
-        r += "ΔT = " + deltaL + " / (" + alpha + " * " + initialL + ") \n";
-        r += "ΔT = " + deltaL + " / "+ alphaInitialL + " \n";
-        r += "ΔT ≃ " + deltaT + " \n";
-        r += " \n";
+        r += writeDeltaT(deltaL, initialL, alpha, alphaInitialL);
         // T = Ti + ΔT
         r += "T = Ti + ΔT";
         r += "T = " + initialT + " + " + deltaT + " \n";
-        r += "T = " + (initialT + deltaT);
+        r += "T ≃ " + (initialT + deltaT);
+        r += " \n";
         return r;
     }
+
 }

@@ -131,7 +131,7 @@ public class LinearController {
                 // Set the result text by the result of the initial temperature
                 lblResult.setText(String.format("%.2f degrees", initialT));
                 // Write the Initial Temperature proccess
-                txtAProccess.setText(pw.writeInitialT(initialT + finalT, finalT));
+                txtAProccess.setText(pw.writeInitialT(initialL, finalL, finalT, alpha));
                 break;
             // Final Temperature
             case 'T':
@@ -139,7 +139,7 @@ public class LinearController {
                 // Set the result text by the result of the final temperature 
                 lblResult.setText(String.format("%.2f degrees", finalT));
                 // Write the Final Temperature proccess
-                txtAProccess.setText(pw.writeFinalT(initialT + finalT, initialT));
+                txtAProccess.setText(pw.writeFinalT(initialL, finalL, initialT, alpha));
                 break;
             // Coefficient
             case 'a':

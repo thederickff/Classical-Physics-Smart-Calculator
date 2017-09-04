@@ -459,7 +459,7 @@ public class LinearExpansion extends javax.swing.JFrame {
             alpha = Double.parseDouble(txtAlpha.getText());
             // Handle the operation by the selected one
             lc.handleOperations(selected, lblResult, lblDeltaL, lblDeltaT, txtAProccess, initialL, finalL, initialT, finalT, alpha);
-            
+            txtAProccess.setText(txtAProccess.getText() + "Created by Derick Felix!");
         } catch (NumberFormatException e) {
             lblResult.setForeground(Color.red.darker());
             lblResult.setText("Try to put numbers, ex: 3.43e-2");
