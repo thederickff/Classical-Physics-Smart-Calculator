@@ -75,5 +75,23 @@ public class ProccessWriterTest {
         // Assert
         assertEquals(expResult, result);
     }
+    
+    @Test
+    public void writeFinalL() {
+        // α = ΔL/LiΔT
+        System.out.println("Final Length");
+        float initialL = 2.0f;
+        double finalL = 2.24;
+        double initialT = 0;
+        double finalT = 200;
+        double alpha = 6.0E-4;
+        float deltaL = (float) (finalL - initialL);
+        float deltaT = (float) (finalT - initialT);
+        float initialLTimesDeltaT = (float) (initialL * deltaT);
+
+        String result;
+        result = pw.writeFinalLength(initialL, finalT, initialT, alpha);
+        System.out.println(result);
+    }
 
 }

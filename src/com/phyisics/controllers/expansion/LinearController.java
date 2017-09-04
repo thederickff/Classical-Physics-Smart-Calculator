@@ -122,24 +122,30 @@ public class LinearController {
                 finalL = calcFinalLength(initialL, finalT, initialT, alpha);
                 // Set the result text by the result of the final length
                 lblResult.setText(String.format("%.6f Lengths", finalL));
+                // Write the Final Length proccess
+                txtAProccess.setText(pw.writeFinalLength(initialL, finalT, initialT, alpha));
                 break;
             // Initial Temperature
             case 't':
                 initialT = calcInitialTemperature(initialL, finalL, finalT, alpha);
                 // Set the result text by the result of the initial temperature
                 lblResult.setText(String.format("%.2f degrees", initialT));
+                // Write the Initial Temperature proccess
+                txtAProccess.setText(pw.writeInitialT(initialT + finalT, finalT));
                 break;
             // Final Temperature
             case 'T':
                 finalT = calcFinalTemperature(initialL, finalL, initialT, alpha);
                 // Set the result text by the result of the final temperature 
                 lblResult.setText(String.format("%.2f degrees", finalT));
+                // Write the Final Temperature proccess
+                txtAProccess.setText(pw.writeFinalT(initialT + finalT, initialT));
                 break;
             // Coefficient
             case 'a':
                 // Set the result text by the result of alpha 
                 lblResult.setText(calcAlpha(initialL, finalL, initialT, finalT));
-
+                // Write the Coefficient alpha proccess
                 txtAProccess.setText(pw.writeAlpha(initialL, finalL, initialT, finalT));
                 break;
             // None
