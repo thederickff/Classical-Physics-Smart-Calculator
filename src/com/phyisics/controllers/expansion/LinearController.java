@@ -5,9 +5,11 @@
  */
 package com.phyisics.controllers.expansion;
 
+import com.phyisics.models.ProccessWriter;
 import com.phyisics.models.expansion.Linear;
 import java.awt.Color;
 import javax.swing.JLabel;
+import javax.swing.JTextArea;
 import javax.swing.JTextField;
 
 /**
@@ -17,9 +19,11 @@ import javax.swing.JTextField;
 public class LinearController {
 
     protected Linear linear;
+    protected ProccessWriter pw;
 
     public LinearController() {
         this.linear = new Linear();
+        this.pw = new ProccessWriter();
     }
 
     /**
@@ -99,51 +103,54 @@ public class LinearController {
     /**
      * Handle the operations by the selected one
      *
-     * @param selected - The item selected
-     * @param result - The result label desired to be updated
-     * @param deltaL - The delta length label desired to be updated
-     * @param deltaT - The delta temperature label desired to be updated
-     * @param initialL - The initial length
-     * @param finalL - The Final length
-     * @param initialT - The initial temperature
-     * @param finalT - The final temperature
-     * @param alpha - The coefficient alpha
+     * @param selected - The item selected - char
+     * @param lblResult - The result label desired to be updated - JLabel
+     * @param lblDeltaL - The delta length label desired to be updated - JLabel
+     * @param lblDeltaT - The delta temperature label desired to be updated - JLabel
+     * @param txtAProcces - The delta temperature label desired to be updated - JLabel
+     * @param initialL - The initial length - double
+     * @param finalL - The Final length - double
+     * @param initialT - The initial temperature - double
+     * @param finalT - The final temperature - double
+     * @param alpha - The coefficient alpha - double
      */
-    public void handleOperations(char selected, JLabel result, JLabel deltaL, JLabel deltaT, double initialL, double finalL, double initialT, double finalT, double alpha) {
-        result.setForeground(Color.green.darker());
+    public void handleOperations(char selected, JLabel lblResult, JLabel lblDeltaL, JLabel lblDeltaT, JTextArea txtAProccess, double initialL, double finalL, double initialT, double finalT, double alpha) {
+        lblResult.setForeground(Color.green.darker());
         switch (selected) {
             // Final Length
             case 'L':
                 finalL = calcFinalLength(initialL, finalT, initialT, alpha);
                 // Set the result text by the result of the final length
-                result.setText(String.format("%.6f Lengths", finalL));
+                lblResult.setText(String.format("%.6f Lengths", finalL));
                 break;
             // Initial Temperature
             case 't':
                 initialT = calcInitialTemperature(initialL, finalL, finalT, alpha);
                 // Set the result text by the result of the initial temperature
-                result.setText(String.format("%.2f degrees", initialT));
+                lblResult.setText(String.format("%.2f degrees", initialT));
                 break;
             // Final Temperature
             case 'T':
                 finalT = calcFinalTemperature(initialL, finalL, initialT, alpha);
                 // Set the result text by the result of the final temperature 
-                result.setText(String.format("%.2f degrees", finalT));
+                lblResult.setText(String.format("%.2f degrees", finalT));
                 break;
             // Coefficient
             case 'a':
                 // Set the result text by the result of alpha 
-                result.setText(calcAlpha(initialL, finalL, initialT, finalT));
+                lblResult.setText(calcAlpha(initialL, finalL, initialT, finalT));
+
+                txtAProccess.setText(pw.writeAlpha(initialL, finalL, initialT, finalT));
                 break;
             // None
             default:
                 // code
-                result.setForeground(Color.magenta.darker());
-                result.setText("You didn't select a type yet");
+                lblResult.setForeground(Color.magenta.darker());
+                lblResult.setText("You didn't select a type yet");
                 break;
         }
-        deltaL.setText(String.format("%.6f Lengths", calcDeltaLength(initialL, finalL)));
-        deltaT.setText(String.format("%.2f degrees", calcDeltaTemperature(initialT, finalT)));
+        lblDeltaL.setText(String.format("%.6f Lengths", calcDeltaLength(initialL, finalL)));
+        lblDeltaT.setText(String.format("%.2f degrees", calcDeltaTemperature(initialT, finalT)));
     }
 
     /**
@@ -159,26 +166,5 @@ public class LinearController {
         } else {
             txt.setText(ph);
         }
-    }
-
-    public String makeProccess(double initialL, double finalL, double initialT, double finalT) {
-
-        String dl = String.format("%.2f", finalL - initialL);
-        String dt = String.format("%.2f", finalT - initialT);
-        String lidt = String.format("%.2f", initialL * Double.parseDouble(dt));
-        String dllidt = String.format("%.6f", Double.parseDouble(dl) / Double.parseDouble(lidt));
-        
-        String proccess = "ΔL = L - Li\n"
-                + "ΔL = " + finalL + " - " + initialL + "\n"
-                + "ΔL = " + dl + "\n"
-                + "ΔT = T - Ti\n"
-                + "ΔT = "+finalT+" - "+initialT+"\n"
-                + "ΔT = "+finalT+"\n"
-                + "α = ΔL/LiΔT\n"
-                + "α = "+dl+" / "+initialL+" * "+dt+"\n"
-                + "α = "+dl+" / "+lidt+"\n"
-                + "α = "+dllidt+"\n";
-        System.out.println("MAKE PROCCESS \n" + proccess);
-        return proccess;
     }
 }

@@ -95,7 +95,7 @@ public class LinearExpansion extends javax.swing.JFrame {
         lblDeltaT = new javax.swing.JLabel();
         paneProccess = new javax.swing.JPanel();
         jScrollPane2 = new javax.swing.JScrollPane();
-        txtaProccess = new javax.swing.JTextArea();
+        txtAProccess = new javax.swing.JTextArea();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Thermodynamics - Linear Expansion");
@@ -364,9 +364,9 @@ public class LinearExpansion extends javax.swing.JFrame {
 
         paneProccess.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Proccess", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Dialog", 0, 14))); // NOI18N
 
-        txtaProccess.setColumns(20);
-        txtaProccess.setRows(5);
-        jScrollPane2.setViewportView(txtaProccess);
+        txtAProccess.setColumns(20);
+        txtAProccess.setRows(5);
+        jScrollPane2.setViewportView(txtAProccess);
 
         javax.swing.GroupLayout paneProccessLayout = new javax.swing.GroupLayout(paneProccess);
         paneProccess.setLayout(paneProccessLayout);
@@ -458,7 +458,7 @@ public class LinearExpansion extends javax.swing.JFrame {
             finalT = Double.parseDouble(txtFinalT.getText());
             alpha = Double.parseDouble(txtAlpha.getText());
             // Handle the operation by the selected one
-            lc.handleOperations(selected, lblResult, lblDeltaL, lblDeltaT, initialL, finalL, initialT, finalT, alpha);
+            lc.handleOperations(selected, lblResult, lblDeltaL, lblDeltaT, txtAProccess, initialL, finalL, initialT, finalT, alpha);
             
         } catch (NumberFormatException e) {
             lblResult.setForeground(Color.red.darker());
@@ -491,11 +491,11 @@ public class LinearExpansion extends javax.swing.JFrame {
     private javax.swing.JPanel paneResult;
     private javax.swing.JPanel paneSelect;
     private javax.swing.JPanel paneValues;
+    private javax.swing.JTextArea txtAProccess;
     private javax.swing.JTextField txtAlpha;
     private javax.swing.JTextField txtFinalL;
     private javax.swing.JTextField txtFinalT;
     private javax.swing.JTextField txtInitialL;
     private javax.swing.JTextField txtInitialT;
-    private javax.swing.JTextArea txtaProccess;
     // End of variables declaration//GEN-END:variables
 }
